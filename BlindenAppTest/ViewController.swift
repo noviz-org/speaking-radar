@@ -84,6 +84,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         let poii: Poi = Poi()
         var textString: String = "sdg"
         textString = poii.name
+        print(Poi.test)
         //textString = "abcd"
         
         print(textString)
