@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		079F167E1F9CCE3800372913 /* DevViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F167D1F9CCE3800372913 /* DevViewController.swift */; };
+		079F16801F9CFAC100372913 /* poi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F167F1F9CFAC100372913 /* poi.swift */; };
 		07CBBB831F99EF51006EAC56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CBBB821F99EF51006EAC56 /* AppDelegate.swift */; };
 		07CBBB851F99EF51006EAC56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CBBB841F99EF51006EAC56 /* ViewController.swift */; };
 		07CBBB881F99EF51006EAC56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07CBBB861F99EF51006EAC56 /* Main.storyboard */; };
@@ -14,6 +16,8 @@
 		07CBBB8D1F99EF51006EAC56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07CBBB8B1F99EF51006EAC56 /* LaunchScreen.storyboard */; };
 		07CBBB981F99EF51006EAC56 /* BlindenAppTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CBBB971F99EF51006EAC56 /* BlindenAppTestTests.swift */; };
 		07CBBBA31F99EF51006EAC56 /* BlindenAppTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CBBBA21F99EF51006EAC56 /* BlindenAppTestUITests.swift */; };
+		07CBBBB21F9A04B4006EAC56 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CBBBB11F9A04B4006EAC56 /* MapKit.framework */; };
+		07CBBBB41F9A0817006EAC56 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CBBBB31F9A0817006EAC56 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,6 +38,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		079F167D1F9CCE3800372913 /* DevViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevViewController.swift; sourceTree = "<group>"; };
+		079F167F1F9CFAC100372913 /* poi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = poi.swift; sourceTree = "<group>"; };
 		07CBBB7F1F99EF51006EAC56 /* BlindenAppTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlindenAppTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07CBBB821F99EF51006EAC56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07CBBB841F99EF51006EAC56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -47,6 +53,8 @@
 		07CBBB9E1F99EF51006EAC56 /* BlindenAppTestUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlindenAppTestUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		07CBBBA21F99EF51006EAC56 /* BlindenAppTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlindenAppTestUITests.swift; sourceTree = "<group>"; };
 		07CBBBA41F99EF51006EAC56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		07CBBBB11F9A04B4006EAC56 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		07CBBBB31F9A0817006EAC56 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +62,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				07CBBBB41F9A0817006EAC56 /* CoreLocation.framework in Frameworks */,
+				07CBBBB21F9A04B4006EAC56 /* MapKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,6 +91,7 @@
 				07CBBB961F99EF51006EAC56 /* BlindenAppTestTests */,
 				07CBBBA11F99EF51006EAC56 /* BlindenAppTestUITests */,
 				07CBBB801F99EF51006EAC56 /* Products */,
+				07CBBBB01F9A04B4006EAC56 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -98,7 +109,9 @@
 			isa = PBXGroup;
 			children = (
 				07CBBB821F99EF51006EAC56 /* AppDelegate.swift */,
+				079F167F1F9CFAC100372913 /* poi.swift */,
 				07CBBB841F99EF51006EAC56 /* ViewController.swift */,
+				079F167D1F9CCE3800372913 /* DevViewController.swift */,
 				07CBBB861F99EF51006EAC56 /* Main.storyboard */,
 				07CBBB891F99EF51006EAC56 /* Assets.xcassets */,
 				07CBBB8B1F99EF51006EAC56 /* LaunchScreen.storyboard */,
@@ -123,6 +136,15 @@
 				07CBBBA41F99EF51006EAC56 /* Info.plist */,
 			);
 			path = BlindenAppTestUITests;
+			sourceTree = "<group>";
+		};
+		07CBBBB01F9A04B4006EAC56 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				07CBBBB31F9A0817006EAC56 /* CoreLocation.framework */,
+				07CBBBB11F9A04B4006EAC56 /* MapKit.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -193,7 +215,13 @@
 				TargetAttributes = {
 					07CBBB7E1F99EF51006EAC56 = {
 						CreatedOnToolsVersion = 8.3.3;
+						DevelopmentTeam = AMFWDP9DUK;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Maps.iOS = {
+								enabled = 1;
+							};
+						};
 					};
 					07CBBB921F99EF51006EAC56 = {
 						CreatedOnToolsVersion = 8.3.3;
@@ -259,6 +287,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				079F16801F9CFAC100372913 /* poi.swift in Sources */,
+				079F167E1F9CCE3800372913 /* DevViewController.swift in Sources */,
 				07CBBB851F99EF51006EAC56 /* ViewController.swift in Sources */,
 				07CBBB831F99EF51006EAC56 /* AppDelegate.swift in Sources */,
 			);
@@ -414,7 +444,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AMFWDP9DUK;
 				INFOPLIST_FILE = BlindenAppTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LR.BlindenAppTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -426,7 +458,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AMFWDP9DUK;
 				INFOPLIST_FILE = BlindenAppTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = LR.BlindenAppTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -507,6 +541,7 @@
 				07CBBBA91F99EF51006EAC56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		07CBBBAA1F99EF51006EAC56 /* Build configuration list for PBXNativeTarget "BlindenAppTestTests" */ = {
 			isa = XCConfigurationList;
@@ -515,6 +550,7 @@
 				07CBBBAC1F99EF51006EAC56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		07CBBBAD1F99EF51006EAC56 /* Build configuration list for PBXNativeTarget "BlindenAppTestUITests" */ = {
 			isa = XCConfigurationList;
@@ -523,6 +559,7 @@
 				07CBBBAF1F99EF51006EAC56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
