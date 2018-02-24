@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0728108920417784006E61C4 /* Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0728108820417784006E61C4 /* Draw.swift */; };
+		0728108B204177F6006E61C4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0728108A204177F6006E61C4 /* Default-568h@2x.png */; };
 		079F167E1F9CCE3800372913 /* DevViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F167D1F9CCE3800372913 /* DevViewController.swift */; };
 		079F16801F9CFAC100372913 /* poi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F167F1F9CFAC100372913 /* poi.swift */; };
 		07CBBB831F99EF51006EAC56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CBBB821F99EF51006EAC56 /* AppDelegate.swift */; };
@@ -15,31 +16,13 @@
 		07CBBB881F99EF51006EAC56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07CBBB861F99EF51006EAC56 /* Main.storyboard */; };
 		07CBBB8A1F99EF51006EAC56 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 07CBBB891F99EF51006EAC56 /* Assets.xcassets */; };
 		07CBBB8D1F99EF51006EAC56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07CBBB8B1F99EF51006EAC56 /* LaunchScreen.storyboard */; };
-		07CBBB981F99EF51006EAC56 /* BlindenAppTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CBBB971F99EF51006EAC56 /* BlindenAppTestTests.swift */; };
-		07CBBBA31F99EF51006EAC56 /* BlindenAppTestUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CBBBA21F99EF51006EAC56 /* BlindenAppTestUITests.swift */; };
 		07CBBBB21F9A04B4006EAC56 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CBBBB11F9A04B4006EAC56 /* MapKit.framework */; };
 		07CBBBB41F9A0817006EAC56 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CBBBB31F9A0817006EAC56 /* CoreLocation.framework */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		07CBBB941F99EF51006EAC56 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 07CBBB771F99EF51006EAC56 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 07CBBB7E1F99EF51006EAC56;
-			remoteInfo = BlindenAppTest;
-		};
-		07CBBB9F1F99EF51006EAC56 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 07CBBB771F99EF51006EAC56 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 07CBBB7E1F99EF51006EAC56;
-			remoteInfo = BlindenAppTest;
-		};
-/* End PBXContainerItemProxy section */
-
 /* Begin PBXFileReference section */
 		0728108820417784006E61C4 /* Draw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Draw.swift; sourceTree = "<group>"; };
+		0728108A204177F6006E61C4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		079F167D1F9CCE3800372913 /* DevViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevViewController.swift; sourceTree = "<group>"; };
 		079F167F1F9CFAC100372913 /* poi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = poi.swift; sourceTree = "<group>"; };
 		07CBBB7F1F99EF51006EAC56 /* BlindenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlindenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -49,12 +32,6 @@
 		07CBBB891F99EF51006EAC56 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		07CBBB8C1F99EF51006EAC56 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		07CBBB8E1F99EF51006EAC56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		07CBBB931F99EF51006EAC56 /* BlindenAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlindenAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		07CBBB971F99EF51006EAC56 /* BlindenAppTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlindenAppTestTests.swift; sourceTree = "<group>"; };
-		07CBBB991F99EF51006EAC56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		07CBBB9E1F99EF51006EAC56 /* BlindenAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BlindenAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		07CBBBA21F99EF51006EAC56 /* BlindenAppTestUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlindenAppTestUITests.swift; sourceTree = "<group>"; };
-		07CBBBA41F99EF51006EAC56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07CBBBB11F9A04B4006EAC56 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		07CBBBB31F9A0817006EAC56 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
@@ -69,29 +46,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		07CBBB901F99EF51006EAC56 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		07CBBB9B1F99EF51006EAC56 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
 		07CBBB761F99EF51006EAC56 = {
 			isa = PBXGroup;
 			children = (
+				0728108A204177F6006E61C4 /* Default-568h@2x.png */,
 				07CBBB811F99EF51006EAC56 /* BlindenApp */,
-				07CBBB961F99EF51006EAC56 /* BlindenAppTestTests */,
-				07CBBBA11F99EF51006EAC56 /* BlindenAppTestUITests */,
 				07CBBB801F99EF51006EAC56 /* Products */,
 				07CBBBB01F9A04B4006EAC56 /* Frameworks */,
 			);
@@ -101,8 +63,6 @@
 			isa = PBXGroup;
 			children = (
 				07CBBB7F1F99EF51006EAC56 /* BlindenApp.app */,
-				07CBBB931F99EF51006EAC56 /* BlindenAppTests.xctest */,
-				07CBBB9E1F99EF51006EAC56 /* BlindenAppUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -121,24 +81,6 @@
 				07CBBB8E1F99EF51006EAC56 /* Info.plist */,
 			);
 			path = BlindenApp;
-			sourceTree = "<group>";
-		};
-		07CBBB961F99EF51006EAC56 /* BlindenAppTestTests */ = {
-			isa = PBXGroup;
-			children = (
-				07CBBB971F99EF51006EAC56 /* BlindenAppTestTests.swift */,
-				07CBBB991F99EF51006EAC56 /* Info.plist */,
-			);
-			path = BlindenAppTestTests;
-			sourceTree = "<group>";
-		};
-		07CBBBA11F99EF51006EAC56 /* BlindenAppTestUITests */ = {
-			isa = PBXGroup;
-			children = (
-				07CBBBA21F99EF51006EAC56 /* BlindenAppTestUITests.swift */,
-				07CBBBA41F99EF51006EAC56 /* Info.plist */,
-			);
-			path = BlindenAppTestUITests;
 			sourceTree = "<group>";
 		};
 		07CBBBB01F9A04B4006EAC56 /* Frameworks */ = {
@@ -170,42 +112,6 @@
 			productReference = 07CBBB7F1F99EF51006EAC56 /* BlindenApp.app */;
 			productType = "com.apple.product-type.application";
 		};
-		07CBBB921F99EF51006EAC56 /* BlindenAppTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 07CBBBAA1F99EF51006EAC56 /* Build configuration list for PBXNativeTarget "BlindenAppTests" */;
-			buildPhases = (
-				07CBBB8F1F99EF51006EAC56 /* Sources */,
-				07CBBB901F99EF51006EAC56 /* Frameworks */,
-				07CBBB911F99EF51006EAC56 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				07CBBB951F99EF51006EAC56 /* PBXTargetDependency */,
-			);
-			name = BlindenAppTests;
-			productName = BlindenAppTestTests;
-			productReference = 07CBBB931F99EF51006EAC56 /* BlindenAppTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
-		07CBBB9D1F99EF51006EAC56 /* BlindenAppUITests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 07CBBBAD1F99EF51006EAC56 /* Build configuration list for PBXNativeTarget "BlindenAppUITests" */;
-			buildPhases = (
-				07CBBB9A1F99EF51006EAC56 /* Sources */,
-				07CBBB9B1F99EF51006EAC56 /* Frameworks */,
-				07CBBB9C1F99EF51006EAC56 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				07CBBBA01F99EF51006EAC56 /* PBXTargetDependency */,
-			);
-			name = BlindenAppUITests;
-			productName = BlindenAppTestUITests;
-			productReference = 07CBBB9E1F99EF51006EAC56 /* BlindenAppUITests.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -227,18 +133,6 @@
 							};
 						};
 					};
-					07CBBB921F99EF51006EAC56 = {
-						CreatedOnToolsVersion = 8.3.3;
-						LastSwiftMigration = 0920;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 07CBBB7E1F99EF51006EAC56;
-					};
-					07CBBB9D1F99EF51006EAC56 = {
-						CreatedOnToolsVersion = 8.3.3;
-						LastSwiftMigration = 0920;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 07CBBB7E1F99EF51006EAC56;
-					};
 				};
 			};
 			buildConfigurationList = 07CBBB7A1F99EF51006EAC56 /* Build configuration list for PBXProject "BlindenApp" */;
@@ -255,8 +149,6 @@
 			projectRoot = "";
 			targets = (
 				07CBBB7E1F99EF51006EAC56 /* BlindenApp */,
-				07CBBB921F99EF51006EAC56 /* BlindenAppTests */,
-				07CBBB9D1F99EF51006EAC56 /* BlindenAppUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -267,22 +159,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				07CBBB8D1F99EF51006EAC56 /* LaunchScreen.storyboard in Resources */,
+				0728108B204177F6006E61C4 /* Default-568h@2x.png in Resources */,
 				07CBBB8A1F99EF51006EAC56 /* Assets.xcassets in Resources */,
 				07CBBB881F99EF51006EAC56 /* Main.storyboard in Resources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		07CBBB911F99EF51006EAC56 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		07CBBB9C1F99EF51006EAC56 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,36 +180,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		07CBBB8F1F99EF51006EAC56 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				07CBBB981F99EF51006EAC56 /* BlindenAppTestTests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		07CBBB9A1F99EF51006EAC56 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				07CBBBA31F99EF51006EAC56 /* BlindenAppTestUITests.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		07CBBB951F99EF51006EAC56 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 07CBBB7E1F99EF51006EAC56 /* BlindenApp */;
-			targetProxy = 07CBBB941F99EF51006EAC56 /* PBXContainerItemProxy */;
-		};
-		07CBBBA01F99EF51006EAC56 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 07CBBB7E1F99EF51006EAC56 /* BlindenApp */;
-			targetProxy = 07CBBB9F1F99EF51006EAC56 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		07CBBB861F99EF51006EAC56 /* Main.storyboard */ = {
@@ -464,10 +314,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AMFWDP9DUK;
-				INFOPLIST_FILE = BlindenAppTest/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/BlindenApp/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = LR.BlindenAppTest;
+				PRODUCT_BUNDLE_IDENTIFIER = LR.BlindenApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
@@ -479,71 +329,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = AMFWDP9DUK;
-				INFOPLIST_FILE = BlindenAppTest/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/BlindenApp/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = LR.BlindenAppTest;
+				PRODUCT_BUNDLE_IDENTIFIER = LR.BlindenApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_SWIFT3_OBJC_INFERENCE = On;
 				SWIFT_VERSION = 4.0;
-			};
-			name = Release;
-		};
-		07CBBBAB1F99EF51006EAC56 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = BlindenAppTestTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = LR.BlindenAppTestTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlindenApp.app/BlindenApp";
-			};
-			name = Debug;
-		};
-		07CBBBAC1F99EF51006EAC56 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				INFOPLIST_FILE = BlindenAppTestTests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = LR.BlindenAppTestTests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/BlindenApp.app/BlindenApp";
-			};
-			name = Release;
-		};
-		07CBBBAE1F99EF51006EAC56 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = BlindenAppTestUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = LR.BlindenAppTestUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = BlindenAppTest;
-			};
-			name = Debug;
-		};
-		07CBBBAF1F99EF51006EAC56 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				INFOPLIST_FILE = BlindenAppTestUITests/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = LR.BlindenAppTestUITests;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_SWIFT3_OBJC_INFERENCE = On;
-				SWIFT_VERSION = 4.0;
-				TEST_TARGET_NAME = BlindenAppTest;
 			};
 			name = Release;
 		};
@@ -564,24 +356,6 @@
 			buildConfigurations = (
 				07CBBBA81F99EF51006EAC56 /* Debug */,
 				07CBBBA91F99EF51006EAC56 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		07CBBBAA1F99EF51006EAC56 /* Build configuration list for PBXNativeTarget "BlindenAppTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				07CBBBAB1F99EF51006EAC56 /* Debug */,
-				07CBBBAC1F99EF51006EAC56 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		07CBBBAD1F99EF51006EAC56 /* Build configuration list for PBXNativeTarget "BlindenAppUITests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				07CBBBAE1F99EF51006EAC56 /* Debug */,
-				07CBBBAF1F99EF51006EAC56 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
