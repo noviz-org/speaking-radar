@@ -55,6 +55,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         let y = newHeading.y
         let z = newHeading.z
         // change
+        // change 2
         // Sets the text of the label to the three compass coordinates
         compassLabel.text = String("(\(x),\(y),\(z))");
         print("Compass: (\(x),\(y),\(z))")
