@@ -1,8 +1,7 @@
 # B_APP
 
-## Overview
-
-Hi!
+This is an App for blind and visually impaired people. 
+It tells you points of interest based on your location enabelling them to explore the world around them.
 
 ## To Do
 
@@ -22,3 +21,4 @@ Hi!
   - Initially the phone pulls POI's with a greatere range than the App actually displays. 
   So you have two circles: an inner circle of displayed POI's and an outher circle with all the POI's pulled from the server.
   A new POI-request will be made if the inner circle crosses the outher circle. (not unlimited available requests)
+
