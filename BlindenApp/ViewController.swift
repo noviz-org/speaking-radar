@@ -21,6 +21,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var compassLabel: UILabel!
     
     @IBOutlet weak var winkelEingabe: UITextField!
+
+    @IBOutlet weak var touch_cordinate: UILabel!
     
     @IBOutlet weak var Button1: UIButton!
     
@@ -61,7 +63,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         print("Compass: (\(x),\(y),\(z))")
     }
     
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let position = touch.location(in: view)
+            print(position)
+        }
+    }
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if let touch = touches.first {
+            let position = touch.location(in: view)
+            print(position)
+        }
+    }
     
     override func viewDidLoad()
     {
