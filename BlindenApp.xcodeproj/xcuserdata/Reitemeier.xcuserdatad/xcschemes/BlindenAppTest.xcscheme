@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "07CBBB7E1F99EF51006EAC56"
-               BuildableName = "BlindenAppTest.app"
-               BlueprintName = "BlindenAppTest"
-               ReferencedContainer = "container:BlindenAppTest.xcodeproj">
+               BuildableName = "BlindenApp.app"
+               BlueprintName = "BlindenApp"
+               ReferencedContainer = "container:BlindenApp.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -34,9 +34,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "07CBBB921F99EF51006EAC56"
-               BuildableName = "BlindenAppTestTests.xctest"
-               BlueprintName = "BlindenAppTestTests"
-               ReferencedContainer = "container:BlindenAppTest.xcodeproj">
+               BuildableName = "BlindenAppTests.xctest"
+               BlueprintName = "BlindenAppTests"
+               ReferencedContainer = "container:BlindenApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
          <TestableReference
@@ -44,9 +44,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "07CBBB9D1F99EF51006EAC56"
-               BuildableName = "BlindenAppTestUITests.xctest"
-               BlueprintName = "BlindenAppTestUITests"
-               ReferencedContainer = "container:BlindenAppTest.xcodeproj">
+               BuildableName = "BlindenAppUITests.xctest"
+               BlueprintName = "BlindenAppUITests"
+               ReferencedContainer = "container:BlindenApp.xcodeproj">
             </BuildableReference>
          </TestableReference>
       </Testables>
@@ -54,9 +54,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "07CBBB7E1F99EF51006EAC56"
-            BuildableName = "BlindenAppTest.app"
-            BlueprintName = "BlindenAppTest"
-            ReferencedContainer = "container:BlindenAppTest.xcodeproj">
+            BuildableName = "BlindenApp.app"
+            BlueprintName = "BlindenApp"
+            ReferencedContainer = "container:BlindenApp.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
       <AdditionalOptions>
@@ -78,9 +78,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "07CBBB7E1F99EF51006EAC56"
-            BuildableName = "BlindenAppTest.app"
-            BlueprintName = "BlindenAppTest"
-            ReferencedContainer = "container:BlindenAppTest.xcodeproj">
+            BuildableName = "BlindenApp.app"
+            BlueprintName = "BlindenApp"
+            ReferencedContainer = "container:BlindenApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
       <AdditionalOptions>
@@ -97,9 +97,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "07CBBB7E1F99EF51006EAC56"
-            BuildableName = "BlindenAppTest.app"
-            BlueprintName = "BlindenAppTest"
-            ReferencedContainer = "container:BlindenAppTest.xcodeproj">
+            BuildableName = "BlindenApp.app"
+            BlueprintName = "BlindenApp"
+            ReferencedContainer = "container:BlindenApp.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
