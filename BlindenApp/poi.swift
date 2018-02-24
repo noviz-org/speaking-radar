@@ -10,18 +10,44 @@ import Foundation
 
 class Poi
 {
-    var name: String = "poi"
-    var long: Int
-    var lat: Int
-    static var test: String = "Hello from the otter slide."
     
-    init()
+    static func getPois()
     {
-        long = 0;
-        lat = 0;
+        print("getting POI data")
+        
+        if let url = GooglePlaces.getRequestUrl(lat: 47.1867914, lng: 8.8274287, radius: 500)
+        {
+            URLSession.shared.dataTask(with: url, completionHandler: {
+                (data, response, error) in
+                
+                let status = (response as? HTTPURLResponse)!.statusCode;
+                if(status != 200)
+                {
+                    // Houston we have a problem
+                    
+                }
+                else
+                {
+                    // Do something
+                    
+                    let response: GooglePlacesResponse? = ViewController.parseData(data: data!)
+                    
+                    if let safe_response: GooglePlacesResponse = response
+                    {
+                        for result in safe_response.results
+                        {
+                            print("Found a result nearby: "+result.name)
+                        }
+                    }
+                    else
+                    {
+                        print("OHhh noo")
+                    }
+                }
+                
+            }).resume()
+        }
     }
-    
-    
     
 }
 

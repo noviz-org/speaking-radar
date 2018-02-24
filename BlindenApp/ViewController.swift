@@ -49,6 +49,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate
 
         i = i+1
         print("LocationManager func did run \(i) times")
+        
+        
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading)
@@ -86,24 +88,28 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         manager.startUpdatingLocation()
         manager.startUpdatingHeading()
         
-        
-        funExt()
+        Poi.getPois();
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    func funExt () {
-        let poii: Poi = Poi()
-        var textString: String = "sdg"
-        textString = poii.name
-        print(Poi.test)
-        //textString = "abcd"
-        
-        print(textString)
-    }
     
+    
+    static func parseData(data: Data) -> GooglePlacesResponse?
+    {
+        let response: GooglePlacesResponse
+        do
+        {
+            response = try JSONDecoder().decode(GooglePlacesResponse.self, from: data)
+        }
+        catch _
+        {
+            return nil
+        }
+        return response
+    }
 }
 
 
