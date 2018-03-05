@@ -22,3 +22,6 @@ It tells you points of interest based on your location enabelling them to explor
   So you have two circles: an inner circle of displayed POI's and an outher circle with all the POI's pulled from the server.
   A new POI-request will be made if the inner circle crosses the outher circle. (not unlimited available requests)
 
+## Output Algorithm
+
+#Rules
