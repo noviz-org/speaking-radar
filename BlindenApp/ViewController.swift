@@ -9,6 +9,7 @@
 import UIKit
 import MapKit
 import CoreLocation
+import AVFoundation
 
 class ViewController: UIViewController, CLLocationManagerDelegate
 {
@@ -29,6 +30,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     var i = 1
     
     let manager = CLLocationManager()
+    
+    let synthesizer = AVSpeechSynthesizer()
+    var speak = AVSpeechUtterance(string: "Text")
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
@@ -89,6 +93,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         manager.startUpdatingHeading()
         
         Poi.getPois();
+        
+        speak = AVSpeechUtterance(string: "Heeeyyyooo, alles geladen")
+        speak.rate = 0.4
+        synthesizer.speak(speak)
+        
     }
     
     override func didReceiveMemoryWarning() {
