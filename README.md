@@ -37,6 +37,7 @@ It outputs POI's (points of interest) based on your location, the direction your
 
 ## Algorithm
 
+```
 ViewDidLoad {
 get_POI(coordinates)
 }
@@ -80,6 +81,7 @@ changedInput() {
 }
 
 
+```
 
 ## Ideas
 
