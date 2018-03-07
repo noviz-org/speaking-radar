@@ -73,13 +73,19 @@ changedInput() {
     if (POI's in desired scan-area) {
     sort list according to distance
     
+    do fancy stuff to make output logical...
     
-    
-    
-    
+    speak()
     }
 }
 
+spak() {
+    pick nearest POI
+    convert nearest POI into text
+    save poi as read
+    
+    goto next POI on list, but ignore read
+}
 
 ```
 
