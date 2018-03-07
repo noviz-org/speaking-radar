@@ -79,7 +79,7 @@ changedInput() {
     }
 }
 
-spak() {
+speak() {
     pick nearest POI
     convert nearest POI into text
     save poi as read
