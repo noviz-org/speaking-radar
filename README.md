@@ -14,6 +14,13 @@ It outputs POI's (points of interest) based on your location, the direction your
 
 - Gitignore for API Key
 
+- Two stages of change recognition when inputs change
+
+    - first stage: filter micromovements
+    - second stage: margin for code efficiency
+    
+ - attribute to POI when it leaves field and when it enterrs
+
 
 ## What information should be outputed:
 
@@ -43,18 +50,19 @@ get_POI(coordinates)
 }
 
 DidUpdateLocation {
-    getGpsPosition = coordinates
+    getGpsPosition() = coordinates
     if (max scan-rance > already downloaded POI-radius) {
     get_POI(coordinates)
     }
     if (coordiantes-lastLocation > 10m) {
-    calculateDistancesToPOIsAndUpdateList()
+    calculateDistancesToPOIs
+    create list with all downloaded POI's sorted according to distance
     coordinates = lastLocation
     }
 }
 
 DidUpdateCompass {
-    getCompas = 2D_heading ///calculate 2D Vector
+    getCompas() = 2D_heading ///calculate 2D Vector
     if (2D_heading-lastHeading > 3°) {
     changedInput()
     2D_heading = lastHeading
@@ -63,7 +71,7 @@ DidUpdateCompass {
 }
 
 DidUpdateTouch {
-    getTouch = scanRange ///calculate desired scan-range from touch height
+    getTouch() = scanRange ///calculate desired scan-range from touch height
     if (scanRange-lastScanRange > 10m) {
     changedInput()
     scanRange = lastScanRange
@@ -72,15 +80,20 @@ DidUpdateTouch {
 
 changedInput() {
     if (POI's in desired scan-area) {
-    sort list according to distance
     
-    do fancy stuff to make output logical...
+    create POI-list with POI's in scanRange from all POI's (already sorted according to distance from )
     
-    speak()
+    create POI-list with POI's in PizzaSliceHeading from POI's within scanRange
+    
+    speak() !!!not necessary if speak() is a loop 
+    }
+    
+    else {
+    speak("non POI's near you")
     }
 }
 
-speak() {
+speak() / loop {
     pick nearest POI
     convert nearest POI into text
     save poi as read
