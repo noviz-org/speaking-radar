@@ -49,24 +49,25 @@ DidUpdateLocation {
     }
     if (coordiantes-lastLocation > 10m) {
     calculateDistancesToPOIsAndUpdateList()
-    }
     coordinates = lastLocation
+    }
 }
 
 DidUpdateCompass {
     getCompas = 2D_heading ///calculate 2D Vector
     if (2D_heading-lastHeading > 3°) {
     changedInput()
-    }
     2D_heading = lastHeading
+    }
+    
 }
 
 DidUpdateTouch {
     getTouch = scanRange ///calculate desired scan-range from touch height
     if (scanRange-lastScanRange > 10m) {
     changedInput()
-    }
     scanRange = lastScanRange
+    }
 }
 
 changedInput() {
