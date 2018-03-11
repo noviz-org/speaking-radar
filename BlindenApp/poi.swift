@@ -36,7 +36,7 @@ class Poi
                     {
                         for result in safe_response.results
                         {
-                            print("Found a result nearby: "+result.name)
+                            print("Found a result nearby: "+result.name+" "+String(result.geometry.location.lat))
                         }
                     }
                     else
