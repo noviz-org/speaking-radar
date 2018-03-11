@@ -60,11 +60,11 @@ struct GooglePlacesResult: Codable
 
 struct GooglePlacesGeometry: Codable
 {
-    var location: GooglePlacesLocation
+    var location: Location
     var viewport: GooglePlacesViewport
 }
 
-struct GooglePlacesLocation: Codable
+struct Location: Codable
 {
     var lat: Double
     var lng: Double
@@ -72,6 +72,6 @@ struct GooglePlacesLocation: Codable
 
 struct GooglePlacesViewport: Codable
 {
-    var northeast: GooglePlacesLocation
-    var southwest: GooglePlacesLocation
+    var northeast: Location
+    var southwest: Location
 }

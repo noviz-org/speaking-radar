@@ -9,8 +9,10 @@
 /* Begin PBXBuildFile section */
 		0728108920417784006E61C4 /* Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0728108820417784006E61C4 /* Draw.swift */; };
 		0728108B204177F6006E61C4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0728108A204177F6006E61C4 /* Default-568h@2x.png */; };
+		074DA2BA2055C70100981831 /* PointOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074DA2B92055C70100981831 /* PointOfInterest.swift */; };
+		074DA2BC2055CB6B00981831 /* Speech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074DA2BB2055CB6B00981831 /* Speech.swift */; };
 		079F167E1F9CCE3800372913 /* DevViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F167D1F9CCE3800372913 /* DevViewController.swift */; };
-		079F16801F9CFAC100372913 /* poi.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F167F1F9CFAC100372913 /* poi.swift */; };
+		079F16801F9CFAC100372913 /* POIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F167F1F9CFAC100372913 /* POIs.swift */; };
 		07BAB7582041AC200010A059 /* GooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BAB7572041AC200010A059 /* GooglePlaces.swift */; };
 		07BAB75A2041C72D0010A059 /* key.txt in Resources */ = {isa = PBXBuildFile; fileRef = 07BAB7592041C72D0010A059 /* key.txt */; };
 		07CBBB831F99EF51006EAC56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CBBB821F99EF51006EAC56 /* AppDelegate.swift */; };
@@ -25,8 +27,10 @@
 /* Begin PBXFileReference section */
 		0728108820417784006E61C4 /* Draw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Draw.swift; sourceTree = "<group>"; };
 		0728108A204177F6006E61C4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		074DA2B92055C70100981831 /* PointOfInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterest.swift; sourceTree = "<group>"; };
+		074DA2BB2055CB6B00981831 /* Speech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speech.swift; sourceTree = "<group>"; };
 		079F167D1F9CCE3800372913 /* DevViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DevViewController.swift; sourceTree = "<group>"; };
-		079F167F1F9CFAC100372913 /* poi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = poi.swift; sourceTree = "<group>"; };
+		079F167F1F9CFAC100372913 /* POIs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POIs.swift; sourceTree = "<group>"; };
 		07BAB7572041AC200010A059 /* GooglePlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlaces.swift; sourceTree = "<group>"; };
 		07BAB7592041C72D0010A059 /* key.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = key.txt; sourceTree = "<group>"; };
 		07CBBB7F1F99EF51006EAC56 /* BlindenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlindenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,12 +83,14 @@
 				079F167D1F9CCE3800372913 /* DevViewController.swift */,
 				07CBBB861F99EF51006EAC56 /* Main.storyboard */,
 				0728108820417784006E61C4 /* Draw.swift */,
-				079F167F1F9CFAC100372913 /* poi.swift */,
+				079F167F1F9CFAC100372913 /* POIs.swift */,
 				07CBBB891F99EF51006EAC56 /* Assets.xcassets */,
 				07CBBB8B1F99EF51006EAC56 /* LaunchScreen.storyboard */,
 				07CBBB8E1F99EF51006EAC56 /* Info.plist */,
 				07BAB7572041AC200010A059 /* GooglePlaces.swift */,
 				07BAB7592041C72D0010A059 /* key.txt */,
+				074DA2B92055C70100981831 /* PointOfInterest.swift */,
+				074DA2BB2055CB6B00981831 /* Speech.swift */,
 			);
 			path = BlindenApp;
 			sourceTree = "<group>";
@@ -179,12 +185,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				079F16801F9CFAC100372913 /* poi.swift in Sources */,
+				074DA2BA2055C70100981831 /* PointOfInterest.swift in Sources */,
+				079F16801F9CFAC100372913 /* POIs.swift in Sources */,
 				079F167E1F9CCE3800372913 /* DevViewController.swift in Sources */,
 				07CBBB851F99EF51006EAC56 /* ViewController.swift in Sources */,
 				07CBBB831F99EF51006EAC56 /* AppDelegate.swift in Sources */,
 				07BAB7582041AC200010A059 /* GooglePlaces.swift in Sources */,
 				0728108920417784006E61C4 /* Draw.swift in Sources */,
+				074DA2BC2055CB6B00981831 /* Speech.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

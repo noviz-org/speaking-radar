@@ -9,7 +9,6 @@
 import UIKit
 import MapKit
 import CoreLocation
-import AVFoundation
 
 class ViewController: UIViewController, CLLocationManagerDelegate
 {
@@ -30,9 +29,6 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     var i = 1
     
     let manager = CLLocationManager()
-    
-    let synthesizer = AVSpeechSynthesizer()
-    var speak = AVSpeechUtterance(string: "Text")
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
@@ -57,16 +53,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading)
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading heading: CLHeading)
     {
-        let x = newHeading.x
-        let y = newHeading.y
-        let z = newHeading.z
-        // change
-        // change 2
-        // Sets the text of the label to the three compass coordinates
-        compassLabel.text = String("(\(x),\(y),\(z))");
-        print("Compass: (\(x),\(y),\(z))")
+        compassLabel.text = String("Angle: \(heading.trueHeading)");
+        print("Angle: \(heading.trueHeading)")
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -82,9 +72,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         }
     }
     
+    @objc func doubleTapped() {
+        // do something here
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        
+        Speech.speakPhrase(text: "Heeeyyyooo, alles geladen")
         
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
@@ -92,12 +88,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         manager.startUpdatingLocation()
         manager.startUpdatingHeading()
         
-        Poi.getPois();
+        POIs.getPois(location: WorldLocation(lat: 47.366696, lng: 8.545235));
         
-        speak = AVSpeechUtterance(string: "Heeeyyyooo, alles geladen")
-        speak.rate = 0.4
-        synthesizer.speak(speak)
-        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
+        tap.numberOfTapsRequired = 2
+        view.addGestureRecognizer(tap)
     }
     
     override func didReceiveMemoryWarning() {
