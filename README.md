@@ -47,43 +47,63 @@ It outputs POI's (points of interest) based on your location, the direction your
 ```
 ViewDidLoad {
 get_POI(coordinates)
+    save POI's sorted according to distance "allPOI"
+
+    create list with POI's in scanRange from all POI's downloaded "ScanRangePOI"
+    create list with POI's in Pizza-sliced-scan-area from POI-list within sccanRange "ScanAreaPOI"
 }
 
 DidUpdateLocation {
     getGpsPosition() = coordinates
+    
     if (max scan-rance > already downloaded POI-radius) {
-    get_POI(coordinates)
+        get_POI(coordinates)
+        save POI's sorted according to distance "allPOI"
+
+        create/update list with POI's in scanRange from all POI's downloaded "ScanRangePOI"
+        create/update list with POI's in Pizza-sliced-scan-area from POI-list within sccanRange "ScanAreaPOI"
     }
+    
     if (coordiantes-lastLocation > 10m) {
-    calculateDistancesToPOIs
-    create list with all downloaded POI's sorted according to distance
-    coordinates = lastLocation
+        update list with POI's in scanRange from all POI's downloaded "ScanRangePOI"        
+        update list with POI's in Pizza-sliced-scan-area from POI-list within sccanRange "ScanAreaPOI"
     }
 }
 
 DidUpdateCompass {
     getCompas() = 2D_heading ///calculate 2D Vector
-    if (2D_heading-lastHeading > 3°) {
-    changedInput()
-    2D_heading = lastHeading
+    
+    if (2D_heading-lastHeading > 3°) {    
+        update list with POI's in Pizza-sliced-scan-area from POI-list within sccanRange "ScanAreaPOI"
+        
+        check if POI's on list "spokenPOI" are still on list "ScacnAreaPOI"
+        =>if not, remove from list "spokenPOI"
+        
+        changedInput()
+        
+        2D_heading = lastHeading
     }
     
 }
 
 DidUpdateTouch {
     getTouch() = scanRange ///calculate desired scan-range from touch height
+    
     if (scanRange-lastScanRange > 10m) {
-    changedInput()
-    scanRange = lastScanRange
+        update list with POI's in scanRange from all POI's downloaded "ScanRangePOI"
+        update list with POI's in Pizza-sliced-scan-area from POI-list within sccanRange "ScanAreaPOI"
+        
+        check if POI's on list "spokenPOI" are still on list "ScacnAreaPOI"
+        =>if not, remove from list "spokenPOI"
+        
+        changedInput()
+        
+        scanRange = lastScanRange
     }
 }
 
 changedInput() {
     if (POI's in desired scan-area) {
-    
-    create POI-list with POI's in scanRange from all POI's (already sorted according to distance from )
-    
-    create POI-list with POI's in PizzaSliceHeading from POI's within scanRange
     
     speak() !!!not necessary if speak() is a loop 
     }
@@ -96,7 +116,7 @@ changedInput() {
 speak() / loop {
     pick nearest POI
     convert nearest POI into text
-    save poi as read
+    save poi as read on list "spokenPOI"
     
     goto next POI on list, but ignore read
 }
