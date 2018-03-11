@@ -1,12 +1,12 @@
 # B_APP
 
-This is an App for blind and visually impaired people.
-It outputs POI's (points of interest) based on your location, the direction your phone is pointing and scan-distance as an input varriable, enabelling one to explore the world around.
-
+B_APP is an App for blind and visually impaired people.
+It points you in the direction of POIs (points of interest) by using your location and the compass using the Google Places API.
+The goal of this app is to enable blind and visually impaired people to explore the world around them.
 
 ## To Do
 
-- The iPhone recognises if it is dropped and sends a signal tone and/or flashes
+- The iPhone recognises if it is dropped and sends a signal tone and maybe flashes
 
 - Calculate the distance to the objects near you based on their and your position
 
@@ -32,19 +32,19 @@ It outputs POI's (points of interest) based on your location, the direction your
 ## Output Algorithm Rules
 
 - Only one String/POI at the time is selected to be put into speech
-- If there are more than one POI in your scan-field, the closest one will be outputet first
-- The scan-field which POI's are put into speech is pizza-sliece shaped and the scan-angle is fixed
-- Every POI that is put into speech completely, is saved as "read" and will not be repeated until:...
+- If there are more than one POIs in your scan-field, the closest one will be mentioned first
+- The scan-field, in which POI's are mentioned, is a section of a circle, with a fixed radius and angle
+- Every POI that is completely spoken, is marked as "read" and will not be repeated or interrupted except under special cirumstances like the following:
     - ...
     - ...
     
-- Not sure if it is better if a POI gets outputet as soon as the input parameters match. The consequence would be that speech has to be able to be aborted so that ther is not outdated information being put inito speech when you are acctally pointing in a different direction.
-  - Something that is being said should never be aborted
-  - Nothing should start to be put into speech if the parameters are changeing at a cecrtain rate (direction, location, scan-range
+- Not sure if it is better if a POI gets output as soon as the input parameters match or not. The consequence would be that speech has to be able to be aborted so that ther is not relying on outdated information.
+  - Something that is being said should never be aborted, or maybe a destinctive sound may indicate an abortion.
+  - Nothing should start to be said if the parameters are changing at a certain rate (direction, location, scan-range...)
 
 ## Algorithm
 
-```
+```.swift
 ViewDidLoad {
 get_POI(coordinates)
     save POI's sorted according to distance "allPOI"
@@ -125,7 +125,9 @@ speak() / loop {
 
 ## Ideas
 
-- The iPhone recognises if it is dropped and sends a signal tone and/or flashes
+- Use some routing technology from either Google Maps or Apple to tell the user where to turn and stuff.
+
+- Figure out when to use the route information and when to 
 
 - While a POI is put into Speech, the volume adjusts according to how close you are to the POI with your active input parameters (scan-range, direction)
 
