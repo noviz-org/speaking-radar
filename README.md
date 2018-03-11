@@ -4,6 +4,22 @@ B_APP is an App for blind and visually impaired people.
 It points you in the direction of POIs (points of interest) by using your location and the compass using the Google Places API.
 The goal of this app is to enable blind and visually impaired people to explore the world around them.
 
+## New Algorithm To-Do list
+
+- [X] Getting poi data
+- [ ] Making an array of the same type of elements       
+    - [ ] with the following structure:
+        - distance
+        - angle
+        - title
+    - [ ] calculate the distance between the coordinates
+    - [ ] calculate the angle between the point en    
+    - [ ] put it in the variables
+- [ ] Get the elements within the certain angle bounds.
+- [ ] Sort the elements for the smallest distance
+- [ ] Output the elements
+
+
 ## To Do
 
 - The iPhone recognises if it is dropped and sends a signal tone and maybe flashes
