@@ -31,7 +31,20 @@ class GooglePlaces
             return ""
         }
     }
-}
+    
+    static func parseData(data: Data) -> GooglePlacesResponse?
+    {
+        let response: GooglePlacesResponse
+        do
+        {
+            response = try JSONDecoder().decode(GooglePlacesResponse.self, from: data)
+        }
+        catch _
+        {
+            return nil
+        }
+        return response
+    }}
 
 
 

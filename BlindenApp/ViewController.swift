@@ -30,6 +30,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     
     let manager = CLLocationManager()
     
+    var pois: [PointOfInterest] = []
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         let location = locations[0]
@@ -101,19 +103,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     
     
     
-    static func parseData(data: Data) -> GooglePlacesResponse?
-    {
-        let response: GooglePlacesResponse
-        do
-        {
-            response = try JSONDecoder().decode(GooglePlacesResponse.self, from: data)
-        }
-        catch _
-        {
-            return nil
-        }
-        return response
-    }
+    
 }
 
 
