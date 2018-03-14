@@ -50,7 +50,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         self.map.showsUserLocation = true
 
         i = i+1
-        print("LocationManager func did run \(i) times")
+        //print("LocationManager func did run \(i) times")
         
         
     }
@@ -75,14 +75,16 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     }
     
     @objc func doubleTapped() {
-        // do something here
+        // double tap found.
+        print("Recognised double tap")
+        Controller.fetchAndReturnPointsOfInterest()
     }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         
-        Speech.speakPhrase(text: "Heeeyyyooo, alles geladen")
+        
         
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
@@ -90,19 +92,26 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         manager.startUpdatingLocation()
         manager.startUpdatingHeading()
         
-        POIs.getPois(location: WorldLocation(lat: 47.366696, lng: 8.545235));
-        
         let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
         tap.numberOfTapsRequired = 2
         view.addGestureRecognizer(tap)
+        
+        // Start
+        Controller.fetchAndReturnPointsOfInterest()
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    
-    
+    static func outputPointsOfInterest(pointsOfInterest: [PointOfInterest])
+    {
+        for point in pointsOfInterest
+        {
+            print(point.title+": "+String(point.distanceInMeters)+"m")
+            Speech.speakPhrase(text: point.title+" ist "+String(point.distanceInMeters)+" Meter entfernt.")
+        }
+    }
     
 }
 

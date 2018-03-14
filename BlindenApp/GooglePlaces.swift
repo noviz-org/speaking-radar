@@ -14,7 +14,7 @@ class GooglePlaces
     
     static func getRequestUrl(lat: Double, lng: Double, radius: Int) -> URL?
     {
-        return URL(string: url+"key="+getKeyFromFile(fileName: "key")+"&location="+String(lat)+","+String(lng)+"&radius="+String(radius))
+        return URL(string: url+"key="+getKeyFromFile(fileName: "GooglePlacesKey")+"&location="+String(lat)+","+String(lng)+"&radius="+String(radius))
     }
     
     static func getKeyFromFile(fileName: String) -> String
@@ -23,7 +23,7 @@ class GooglePlaces
         
         do {
             let str = try String(contentsOfFile: path!, encoding: String.Encoding.utf8)
-            return str.substring(to: str.index(of: "\n")!) // This is dangerous
+            return str.substring(to: str.index(of: "\n")!) // This is dangerous TODO fix it.
         }
         catch
         {
@@ -73,18 +73,12 @@ struct GooglePlacesResult: Codable
 
 struct GooglePlacesGeometry: Codable
 {
-    var location: Location
+    var location: CoordinateLocation
     var viewport: GooglePlacesViewport
-}
-
-struct Location: Codable
-{
-    var lat: Double
-    var lng: Double
 }
 
 struct GooglePlacesViewport: Codable
 {
-    var northeast: Location
-    var southwest: Location
+    var northeast: CoordinateLocation
+    var southwest: CoordinateLocation
 }

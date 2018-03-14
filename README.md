@@ -7,14 +7,14 @@ The goal of this app is to enable blind and visually impaired people to explore 
 ## New Algorithm To-Do list
 
 - [X] Getting poi data
-- [ ] Making an array of the same type of elements       
-    - [ ] with the following structure:
+- [X] Making an array of the same type of elements
+    - [X] with the following structure:
         - distance
         - angle
         - title
-    - [ ] calculate the distance between the coordinates
-    - [ ] calculate the angle between the point en    
-    - [ ] put it in the variables
+    - [X] calculate the distance between the coordinates
+    - [ ] calculate the angle
+    - [X] put it in the variables
 - [ ] Get the elements within the certain angle bounds.
 - [ ] Sort the elements for the smallest distance
 - [ ] Output the elements

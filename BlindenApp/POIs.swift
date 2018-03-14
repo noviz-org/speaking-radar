@@ -12,7 +12,7 @@ import Foundation
 class POIs
 {
     
-    static func getPois(location: WorldLocation) -> [GooglePlacesResult]
+    static func getGooglePlaces(location: CoordinateLocation) -> [GooglePlacesResult]
     {
         print("getting POI data")
         
@@ -56,15 +56,27 @@ class POIs
     }
     
     
-    static func makePOIsFromGooglePlaces(currentLocation: WorldLocation, currentOrientation: Double, googlePlaces: [GooglePlacesResult]) //-> [PointOfInterest]
+    static func makePOIsFromGooglePlaces(currentLocation: CoordinateLocation, currentOrientation: Double, googlePlaces: [GooglePlacesResult]) -> [PointOfInterest]
     {
-        
+        var pois: [PointOfInterest] = []
+        for place in googlePlaces
+        {
+            // Calculate distance between coordinates
+            let dist = CoordinateLocation.calculateDistanceBetweenPointsInMeters(loc1: currentLocation, loc2: place.geometry.location)
+            
+            // Calculate the angle
+            let angle = Double(0) // TODO
+            
+            // Set stuff
+            pois.append(PointOfInterest(title: place.name, distanceInMeters: Int(dist.rounded()), angleInDegrees: angle))
+        }
+        return pois
     }
     
 }
 
 
-class WorldLocation
+class CoordinateLocation: Codable
 {
     var lat: Double
     var lng: Double
@@ -73,4 +85,21 @@ class WorldLocation
         self.lat = lat
         self.lng = lng
     }
+    
+    static func calculateDistanceBetweenPointsInMeters(loc1: CoordinateLocation, loc2: CoordinateLocation) -> Double
+    {
+        // TODO: Check if this is correct...
+        
+        let earthRadiusKm = 6371 // km
+    
+        let dLat = (loc2.lat-loc1.lat)*(Double.pi/180)
+        let dLon = (loc2.lng-loc1.lng)*(Double.pi/180)
+    
+        let lat1 = (loc1.lat)*(Double.pi/180)
+        let lat2 = (loc2.lat)*(Double.pi/180)
+        let a = sin(dLat/2) * sin(dLat/2) + sin(dLon/2) * sin(dLon/2) * cos(lat1) * cos(lat2);
+        let c = 2 * atan2(sqrt(a), sqrt(1-a));
+        return Double(earthRadiusKm) * c * Double(1000);
+    }
+    
 }
