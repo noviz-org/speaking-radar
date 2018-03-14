@@ -12,12 +12,8 @@ import Foundation
 class POIs
 {
     
-    static func getGooglePlaces(location: CoordinateLocation) -> [GooglePlacesResult]
+    static func getGooglePlaces(location: CoordinateLocation)
     {
-        print("getting POI data")
-        
-        var array: [GooglePlacesResult] = []
-        
         if let url = GooglePlaces.getRequestUrl(lat: location.lat, lng: location.lng, radius: 500)
         {
             URLSession.shared.dataTask(with: url, completionHandler: {
@@ -34,6 +30,7 @@ class POIs
                 else
                 {
                     // Do something
+                    var array: [GooglePlacesResult] = []
                     
                     let response: GooglePlacesResponse? = GooglePlaces.parseData(data: data!)
                     
@@ -43,6 +40,9 @@ class POIs
                         {
                             array.append(result)
                         }
+                        
+                        // Then callback to the function
+                        Controller.gotGooglePlaces(places: array)
                     }
                     else
                     {
@@ -52,7 +52,6 @@ class POIs
                 
             }).resume()
         }
-        return array
     }
     
     

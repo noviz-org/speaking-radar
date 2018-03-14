@@ -17,7 +17,7 @@ The goal of this app is to enable blind and visually impaired people to explore 
     - [X] put it in the variables
 - [ ] Get the elements within the certain angle bounds.
 - [ ] Sort the elements for the smallest distance
-- [ ] Output the elements
+- [X] Output the elements
 
 
 ## To Do
