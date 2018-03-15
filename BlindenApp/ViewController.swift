@@ -26,7 +26,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     
     @IBOutlet weak var Button1: UIButton!
     
-    var i = 1
+    var currentLocation: CLLocation?
+    var currentAngle: Double?
     
     let manager = CLLocationManager()
     
@@ -34,31 +35,29 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
-        let location = locations[0]
+        currentLocation = locations[0]
         
-        let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-        let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-        let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
-        map.setRegion(region, animated: true)
-        
-        print(location.course)
-
-        latitudeLabel.text = String(location.coordinate.latitude)
-        longitudeLabel.text = String(location.coordinate.longitude)
-        courseLocation.text = String(location.course)
-        
-        self.map.showsUserLocation = true
-
-        i = i+1
-        //print("LocationManager func did run \(i) times")
-        
-        
+        if let location = currentLocation
+        {
+            let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
+            let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
+            let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
+            map.setRegion(region, animated: true)
+            
+            print(location.course)
+            
+            latitudeLabel.text = String(location.coordinate.latitude)
+            longitudeLabel.text = String(location.coordinate.longitude)
+            courseLocation.text = String(location.course)
+            
+            self.map.showsUserLocation = true
+        }
     }
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading heading: CLHeading)
     {
         compassLabel.text = String("Angle: \(heading.trueHeading)");
-        print("Angle: \(heading.trueHeading)")
+        currentAngle = heading.trueHeading
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -77,7 +76,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     @objc func doubleTapped() {
         // double tap found.
         print("Recognised double tap")
-        Controller.fetchAndReturnPointsOfInterest()
+        if let location = currentLocation
+        {
+            Controller.fetchAndReturnPointsOfInterest(location: CoordinateLocation(lat: location.coordinate.latitude, lng: location.coordinate.latitude))
+        }
+        
     }
     
     override func viewDidLoad()
@@ -97,7 +100,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         view.addGestureRecognizer(tap)
         
         // Start
-        Controller.fetchAndReturnPointsOfInterest()
+        if let location = currentLocation
+        {
+            Controller.fetchAndReturnPointsOfInterest(location: CoordinateLocation(lat: location.coordinate.latitude, lng: location.coordinate.longitude))
+        }
+        
     }
     
     override func didReceiveMemoryWarning() {
@@ -109,7 +116,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         for point in pointsOfInterest
         {
             print(point.title+": "+String(point.distanceInMeters)+"m")
+            
+            // Speech
             Speech.speakPhrase(text: point.title+" ist "+String(point.distanceInMeters)+" Meter entfernt.")
+            
+            // UI
+            // TODO
         }
     }
     
