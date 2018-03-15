@@ -13,6 +13,9 @@ class Controller
     static func fetchAndReturnPointsOfInterest(location: CoordinateLocation)
     {
         // Get and output
+        print("lat: "+String(location.lat)+", lng: "+String(location.lng))
+        
+        // Zürich: CoordinateLocation(lat: 47.366696, lng: 8.545235)
         
         Speech.speakPhrase(text: "Suche nach Orten")
         
@@ -20,9 +23,9 @@ class Controller
         POIs.getGooglePlaces(location: location);
     }
     
-    static func gotGooglePlaces(places: [GooglePlacesResult])
+    static func gotGooglePlaces(places: [GooglePlacesResult], location: CoordinateLocation)
     {
-        let points = POIs.makePOIsFromGooglePlaces(currentLocation: CoordinateLocation(lat: 47.366696, lng: 8.545235), currentOrientation: 0, googlePlaces: places)
+        let points = POIs.makePOIsFromGooglePlaces(currentLocation: location, currentOrientation: 0, googlePlaces: places)
         ViewController.outputPointsOfInterest(pointsOfInterest: points)
     }
     

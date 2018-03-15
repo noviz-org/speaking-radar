@@ -32,7 +32,9 @@ class POIs
                     // Do something
                     var array: [GooglePlacesResult] = []
                     
-                    let response: GooglePlacesResponse? = GooglePlaces.parseData(data: data!)
+                    print(String(describing: data))
+                    
+                    let response: GooglePlacesResponse? = GooglePlaces.parseData(data: data!) // TODO
                     
                     if let safe_response: GooglePlacesResponse = response
                     {
@@ -42,7 +44,7 @@ class POIs
                         }
                         
                         // Then callback to the function
-                        Controller.gotGooglePlaces(places: array)
+                        Controller.gotGooglePlaces(places: array, location: location)
                     }
                     else
                     {

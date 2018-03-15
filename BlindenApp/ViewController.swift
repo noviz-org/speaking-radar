@@ -35,6 +35,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
+        print("locations: "+String(locations.count))
         currentLocation = locations[0]
         
         if let location = currentLocation
@@ -51,6 +52,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate
             courseLocation.text = String(location.course)
             
             self.map.showsUserLocation = true
+        }
+        else
+        {
+            print("cannot resolve location")
         }
     }
     
@@ -78,7 +83,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         print("Recognised double tap")
         if let location = currentLocation
         {
-            Controller.fetchAndReturnPointsOfInterest(location: CoordinateLocation(lat: location.coordinate.latitude, lng: location.coordinate.latitude))
+            Controller.fetchAndReturnPointsOfInterest(location: CoordinateLocation(lat: location.coordinate.latitude, lng: location.coordinate.longitude))
+        }
+        else
+        {
+            print("cannot resolve location")
         }
         
     }
@@ -102,7 +111,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         // Start
         if let location = currentLocation
         {
+            print(location)
             Controller.fetchAndReturnPointsOfInterest(location: CoordinateLocation(lat: location.coordinate.latitude, lng: location.coordinate.longitude))
+        }
+        else
+        {
+            print("cannot resolve location")
         }
         
     }
