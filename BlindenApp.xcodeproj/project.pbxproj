@@ -14,7 +14,6 @@
 		079F16801F9CFAC100372913 /* POIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F167F1F9CFAC100372913 /* POIs.swift */; };
 		07A7390E2059B4400001DA2A /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A7390D2059B4400001DA2A /* Controller.swift */; };
 		07BAB7582041AC200010A059 /* GooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BAB7572041AC200010A059 /* GooglePlaces.swift */; };
-		07BAB75A2041C72D0010A059 /* GooglePlacesKey.txt in Resources */ = {isa = PBXBuildFile; fileRef = 07BAB7592041C72D0010A059 /* GooglePlacesKey.txt */; };
 		07CBBB831F99EF51006EAC56 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CBBB821F99EF51006EAC56 /* AppDelegate.swift */; };
 		07CBBB851F99EF51006EAC56 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07CBBB841F99EF51006EAC56 /* ViewController.swift */; };
 		07CBBB881F99EF51006EAC56 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07CBBB861F99EF51006EAC56 /* Main.storyboard */; };
@@ -22,6 +21,7 @@
 		07CBBB8D1F99EF51006EAC56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07CBBB8B1F99EF51006EAC56 /* LaunchScreen.storyboard */; };
 		07CBBBB21F9A04B4006EAC56 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CBBBB11F9A04B4006EAC56 /* MapKit.framework */; };
 		07CBBBB41F9A0817006EAC56 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CBBBB31F9A0817006EAC56 /* CoreLocation.framework */; };
+		80ACB691205D7F7700501C7D /* GooglePlacesKey.txt in Resources */ = {isa = PBXBuildFile; fileRef = 80ACB690205D7F7700501C7D /* GooglePlacesKey.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,7 +32,6 @@
 		079F167F1F9CFAC100372913 /* POIs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POIs.swift; sourceTree = "<group>"; };
 		07A7390D2059B4400001DA2A /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		07BAB7572041AC200010A059 /* GooglePlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlaces.swift; sourceTree = "<group>"; };
-		07BAB7592041C72D0010A059 /* GooglePlacesKey.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = GooglePlacesKey.txt; sourceTree = "<group>"; };
 		07CBBB7F1F99EF51006EAC56 /* BlindenApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BlindenApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		07CBBB821F99EF51006EAC56 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		07CBBB841F99EF51006EAC56 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,6 +41,7 @@
 		07CBBB8E1F99EF51006EAC56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07CBBBB11F9A04B4006EAC56 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		07CBBBB31F9A0817006EAC56 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		80ACB690205D7F7700501C7D /* GooglePlacesKey.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = GooglePlacesKey.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,14 +57,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		07A739102059B5C90001DA2A /* keys */ = {
-			isa = PBXGroup;
-			children = (
-				07BAB7592041C72D0010A059 /* GooglePlacesKey.txt */,
-			);
-			path = keys;
-			sourceTree = "<group>";
-		};
 		07CBBB761F99EF51006EAC56 = {
 			isa = PBXGroup;
 			children = (
@@ -86,7 +78,7 @@
 		07CBBB811F99EF51006EAC56 /* BlindenApp */ = {
 			isa = PBXGroup;
 			children = (
-				07A739102059B5C90001DA2A /* keys */,
+				80ACB68F205D7F4700501C7D /* keys */,
 				07CBBB821F99EF51006EAC56 /* AppDelegate.swift */,
 				07CBBB841F99EF51006EAC56 /* ViewController.swift */,
 				07CBBB861F99EF51006EAC56 /* Main.storyboard */,
@@ -110,6 +102,14 @@
 				07CBBBB11F9A04B4006EAC56 /* MapKit.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		80ACB68F205D7F4700501C7D /* keys */ = {
+			isa = PBXGroup;
+			children = (
+				80ACB690205D7F7700501C7D /* GooglePlacesKey.txt */,
+			);
+			path = keys;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -179,8 +179,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				07CBBB8D1F99EF51006EAC56 /* LaunchScreen.storyboard in Resources */,
-				07BAB75A2041C72D0010A059 /* GooglePlacesKey.txt in Resources */,
 				0728108B204177F6006E61C4 /* Default-568h@2x.png in Resources */,
+				80ACB691205D7F7700501C7D /* GooglePlacesKey.txt in Resources */,
 				07CBBB8A1F99EF51006EAC56 /* Assets.xcassets in Resources */,
 				07CBBB881F99EF51006EAC56 /* Main.storyboard in Resources */,
 			);
