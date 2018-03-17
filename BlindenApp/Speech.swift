@@ -17,7 +17,7 @@ class Speech
     static func speakPhrase(text: String)
     {
         let phrase = AVSpeechUtterance(string: text)
-        phrase.rate = 0.4
+        phrase.rate = 0.5
         self.synthesizer.speak(phrase)
     }
     
