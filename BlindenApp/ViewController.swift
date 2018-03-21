@@ -19,12 +19,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var longitudeLabel: UILabel!
     @IBOutlet weak var courseLocation: UILabel!
     @IBOutlet weak var compassLabel: UILabel!
-    
-    @IBOutlet weak var winkelEingabe: UITextField!
 
     @IBOutlet weak var touch_cordinate: UILabel!
-    
-    @IBOutlet weak var Button1: UIButton!
     
     var currentLocation: CLLocation?
     var currentAngle: Double?
@@ -119,7 +115,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate
             print("cannot resolve location")
         }
         
+
+        
+        let circle = CAShapeLayer()
+        circle.path = circlePathWithCenter(center: CGPoint(x: 200,y: 400), radius: 50).cgPath
+        circle.fillColor = UIColor.blue.cgColor
+        self.view.layer.addSublayer(circle)
+        
+        
     }
+    
+    func circlePathWithCenter(center: CGPoint, radius: CGFloat) -> UIBezierPath {
+        let circlePath = UIBezierPath()
+        circlePath.addArc(withCenter: center, radius: radius, startAngle: -CGFloat(M_PI), endAngle: -CGFloat(M_PI/2), clockwise: true)
+        circlePath.addArc(withCenter: center, radius: radius, startAngle: -CGFloat(M_PI/2), endAngle: 0, clockwise: true)
+        circlePath.addArc(withCenter: center, radius: radius, startAngle: 0, endAngle: CGFloat(M_PI/2), clockwise: true)
+        circlePath.addArc(withCenter: center, radius: radius, startAngle: CGFloat(M_PI/2), endAngle: CGFloat(M_PI), clockwise: true)
+        circlePath.close()
+        return circlePath
+    }
+
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
