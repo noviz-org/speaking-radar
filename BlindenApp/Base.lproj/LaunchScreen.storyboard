@@ -29,7 +29,7 @@
                                     <constraint firstAttribute="width" secondItem="b32-lM-wx2" secondAttribute="height" multiplier="1:1" id="pDf-hB-ZNg"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© Daniel Stalder, Lukas Büehler, Lukas Reitemeier" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="0xD-tA-XGc">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© Daniel Stalder, Lukas Bühler, Lukas Reitemeier" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="0xD-tA-XGc">
                                 <rect key="frame" x="0.0" y="601" width="377" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="rBe-CG-Icy"/>
