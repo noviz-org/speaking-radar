@@ -145,7 +145,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     {
         for point in pointsOfInterest
         {
-            print(point.title+": "+String(point.distanceInMeters)+"m")
+            print(point.title+": "+String(point.distanceInMeters)+"m, Winkel: "+String(point.angleInDegrees))
             
             // Speech
             Speech.speakPhrase(text: point.title+" ist "+String(point.distanceInMeters)+" Meter entfernt.")

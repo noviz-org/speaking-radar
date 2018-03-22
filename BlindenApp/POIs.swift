@@ -66,7 +66,7 @@ class POIs
             let dist = CoordinateLocation.calculateDistanceBetweenPointsInMeters(loc1: currentLocation, loc2: place.geometry.location)
             
             // Calculate the angle
-            let angle = Double(0) // TODO
+            let angle = CoordinateLocation.claculateAngleToLongitudeInDegrees(currentLocation: currentLocation, pointLocation: place.geometry.location) // TODO
             
             // Set stuff
             pois.append(PointOfInterest(title: place.name, distanceInMeters: Int(dist.rounded()), angleInDegrees: angle))
@@ -89,8 +89,6 @@ class CoordinateLocation: Codable
     
     static func calculateDistanceBetweenPointsInMeters(loc1: CoordinateLocation, loc2: CoordinateLocation) -> Double
     {
-        // TODO: Check if this is correct...
-        
         let earthRadiusKm = 6371 // km
     
         let dLat = (loc2.lat-loc1.lat)*(Double.pi/180)
@@ -100,7 +98,15 @@ class CoordinateLocation: Codable
         let lat2 = (loc2.lat)*(Double.pi/180)
         let a = sin(dLat/2) * sin(dLat/2) + sin(dLon/2) * sin(dLon/2) * cos(lat1) * cos(lat2);
         let c = 2 * atan2(sqrt(a), sqrt(1-a));
-        return Double(earthRadiusKm) * c * Double(1000);
+        return Double(earthRadiusKm) * c * Double(1000)
     }
     
+    static func claculateAngleToLongitudeInDegrees(currentLocation: CoordinateLocation, pointLocation: CoordinateLocation) -> Double
+    {
+        let vector_x = pointLocation.lng - currentLocation.lng
+        let vector_y = pointLocation.lat - currentLocation.lat
+        
+        let angle_rad = atan2(vector_y, vector_x) - atan2(1, 0)
+        return ((angle_rad * (-180/Double.pi)) + 360).truncatingRemainder(dividingBy: 360)
+    }
 }
