@@ -77,6 +77,15 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     @objc func doubleTapped() {
         // double tap found.
         print("Recognised double tap")
+        
+        print("AVSpeechSynthesizer_Status:")
+        print(Speech.synthesizer.isSpeaking)
+        
+        if (Speech.synthesizer.isSpeaking) {
+            print("is actually speaking")   ///bim zweite mal doppel tap gits es us
+            Speech.synthesizer.stopSpeaking(at: .immediate)
+        }
+        
         if let location = currentLocation
         {
             Controller.fetchAndReturnPointsOfInterest(location: CoordinateLocation(lat: location.coordinate.latitude, lng: location.coordinate.longitude))
