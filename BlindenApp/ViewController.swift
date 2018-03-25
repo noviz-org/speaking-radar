@@ -76,23 +76,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     
     @objc func doubleTapped() {
         // double tap found.
-        print("Recognised double tap")
-        
         print("AVSpeechSynthesizer_Status:")
         print(Speech.synthesizer.isSpeaking)
         
         if (Speech.synthesizer.isSpeaking) {
-            print("is actually speaking")   ///bim zweite mal doppel tap gits es us
+            print("was speaking, is now stoped")
             Speech.synthesizer.stopSpeaking(at: .immediate)
-        }
-        
-        if let location = currentLocation
-        {
-            Controller.fetchAndReturnPointsOfInterest(location: CoordinateLocation(lat: location.coordinate.latitude, lng: location.coordinate.longitude))
-        }
-        else
-        {
-            print("cannot resolve location")
         }
         
     }
@@ -148,7 +137,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         self.view.addGestureRecognizer(swipeDown)
     }
 
-func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
     if gesture.direction == UISwipeGestureRecognizerDirection.right {
         print("Swipe Right")
     }
@@ -157,6 +146,18 @@ func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
     }
     else if gesture.direction == UISwipeGestureRecognizerDirection.up {
         print("Swipe Up")
+        
+        print("AVSpeechSynthesizer_Status:")
+        print(Speech.synthesizer.isSpeaking)
+        
+        if let location = currentLocation
+        {
+            Controller.fetchAndReturnPointsOfInterest(location: CoordinateLocation(lat: location.coordinate.latitude, lng: location.coordinate.longitude))
+        }
+        else
+        {
+            print("cannot resolve location")
+        }
     }
     else if gesture.direction == UISwipeGestureRecognizerDirection.down {
         print("Swipe Down")
