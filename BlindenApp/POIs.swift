@@ -12,7 +12,7 @@ import Foundation
 class POIs
 {
     
-    static func getGooglePlaces(location: CoordinateLocation)
+    static func getGooglePlaces(location: CoordinateLocation, currentOrientation: Double)
     {
         if let url = GooglePlaces.getRequestUrl(lat: location.lat, lng: location.lng, radius: 500)
         {
@@ -44,7 +44,7 @@ class POIs
                         }
                         
                         // Then callback to the function
-                        Controller.gotGooglePlaces(places: array, location: location)
+                        Controller.gotGooglePlaces(places: array, location: location, currentOrientation: currentOrientation)
                     }
                     else
                     {
@@ -57,7 +57,7 @@ class POIs
     }
     
     
-    static func makePOIsFromGooglePlaces(currentLocation: CoordinateLocation, currentOrientation: Double, googlePlaces: [GooglePlacesResult]) -> [PointOfInterest]
+    static func makePOIsFromGooglePlaces(currentLocation: CoordinateLocation, googlePlaces: [GooglePlacesResult]) -> [PointOfInterest]
     {
         var pois: [PointOfInterest] = []
         for place in googlePlaces

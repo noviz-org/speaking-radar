@@ -80,8 +80,8 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         print(Speech.synthesizer.isSpeaking)
         
         if (Speech.synthesizer.isSpeaking) {
-            print("was speaking, is now stoped")
             Speech.synthesizer.stopSpeaking(at: .immediate)
+            print("was speaking, is now stoped")
         }
         else {
             print("is not speaking")
@@ -109,7 +109,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         if let location = currentLocation
         {
             print(location)
-            Controller.fetchAndReturnPointsOfInterest(location: CoordinateLocation(lat: location.coordinate.latitude, lng: location.coordinate.longitude))
+            Controller.fetchAndReturnPointsOfInterest(location: CoordinateLocation(lat: location.coordinate.latitude, lng: location.coordinate.longitude), currentOrientation: currentAngle!)
         }
         else
         {
@@ -153,9 +153,18 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         print("AVSpeechSynthesizer_Status:")
         print(Speech.synthesizer.isSpeaking)
         
+        if (Speech.synthesizer.isSpeaking) {
+            Speech.synthesizer.stopSpeaking(at: .immediate)
+            print("was speaking, is now stoped")
+        }
+        else {
+            print("is not speaking")
+        }
+        
+        
         if let location = currentLocation
         {
-            Controller.fetchAndReturnPointsOfInterest(location: CoordinateLocation(lat: location.coordinate.latitude, lng: location.coordinate.longitude))
+            Controller.fetchAndReturnPointsOfInterest(location: CoordinateLocation(lat: location.coordinate.latitude, lng: location.coordinate.longitude), currentOrientation: currentAngle!)
         }
         else
         {
@@ -185,15 +194,22 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     
     static func outputPointsOfInterest(pointsOfInterest: [PointOfInterest])
     {
-        for point in pointsOfInterest
+        if(pointsOfInterest.count > 0)
         {
-            print(point.title+": "+String(point.distanceInMeters)+"m, Winkel: "+String(point.angleInDegrees))
-            
-            // Speech
-            Speech.speakPhrase(text: point.title+" ist "+String(point.distanceInMeters)+" Meter entfernt.")
-            
-            // UI
-            // TODO
+            for point in pointsOfInterest
+            {
+                print(point.title+": "+String(point.distanceInMeters)+"m, Winkel: "+String(point.angleInDegrees))
+                
+                // Speech
+                Speech.speakPhrase(text: point.title+" ist "+String(point.distanceInMeters)+" Meter entfernt.")
+                
+                // UI
+                // TODO
+            }
+        }
+        else
+        {
+            Speech.speakPhrase(text: "Keine signifikanten Punkte in diese Richtung gefunden")
         }
     }
     
