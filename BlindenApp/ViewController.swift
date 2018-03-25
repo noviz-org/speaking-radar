@@ -83,6 +83,9 @@ class ViewController: UIViewController, CLLocationManagerDelegate
             print("was speaking, is now stoped")
             Speech.synthesizer.stopSpeaking(at: .immediate)
         }
+        else {
+            print("is not speaking")
+        }
         
     }
     
