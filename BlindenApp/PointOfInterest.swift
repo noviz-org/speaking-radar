@@ -20,3 +20,9 @@ class PointOfInterest
         self.angleInDegrees = angleInDegrees
     }
 }
+
+extension PointOfInterest: CustomStringConvertible {
+    var description: String {
+        return "'\(title)', \(distanceInMeters)m, \(angleInDegrees) degrees"
+    }
+}

@@ -21,4 +21,18 @@ class Speech
         self.synthesizer.speak(phrase)
     }
     
+    static func startSearchPhrase()
+    {
+        self.speakPhrase(text: "Suche nach Orten")
+    }
+    
+    static func resultPhrase(point: PointOfInterest)
+    {
+        self.speakPhrase(text: point.title+" ist "+String(point.distanceInMeters)+" Meter entfernt.")
+    }
+    
+    static func noResultsPhrase()
+    {
+        self.speakPhrase(text: "Keine signifikanten Punkte in diese Richtung gefunden")
+    }
 }

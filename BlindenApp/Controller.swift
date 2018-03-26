@@ -17,7 +17,8 @@ class Controller
         
         // Zürich: CoordinateLocation(lat: 47.366696, lng: 8.545235)
         
-        Speech.speakPhrase(text: "Suche nach Orten")
+        Speech.startSearchPhrase()
+        
         
         // Start fetching the Google Places.
         POIs.getGooglePlaces(location: location, currentOrientation: currentOrientation);
@@ -25,16 +26,24 @@ class Controller
     
     static func gotGooglePlaces(places: [GooglePlacesResult], location: CoordinateLocation, currentOrientation: Double)
     {
+        print("current orientation: "+String(currentOrientation))
+        
         let points = sortPOIsForAngle(pois: POIs.makePOIsFromGooglePlaces(currentLocation: location, googlePlaces: places))
         
         let slicedPoints = getPOIsInPizzaSlice(allPOIsSorted: points, currentOrientation: currentOrientation, sliceAngle: 45)
         
-        ViewController.outputPointsOfInterest(pointsOfInterest: slicedPoints)
+        let sortedPoints = sortPOIsForDistance(pois: slicedPoints)
+
+        ViewController.outputPointsOfInterest(pointsOfInterest: sortedPoints)
     }
     
     static func sortPOIsForAngle(pois: [PointOfInterest]) -> [PointOfInterest]
     {
-        return pois.sorted(by: { $0.angleInDegrees > $1.angleInDegrees })
+        return pois.sorted(by: { $0.angleInDegrees < $1.angleInDegrees })
+    }
+    static func sortPOIsForDistance(pois: [PointOfInterest]) -> [PointOfInterest]
+    {
+        return pois.sorted(by: { $0.distanceInMeters < $1.distanceInMeters })
     }
     
     static func getPOIsInPizzaSlice(allPOIsSorted: [PointOfInterest], currentOrientation: Double, sliceAngle: Double) -> [PointOfInterest] // returned array might be empty

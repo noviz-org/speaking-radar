@@ -23,7 +23,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     @IBOutlet weak var touch_cordinate: UILabel!
     
     var currentLocation: CLLocation?
-    var currentAngle: Double?
+    var currentAngle: Double? = 90
     
     let manager = CLLocationManager()
     
@@ -201,7 +201,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
                 print(point.title+": "+String(point.distanceInMeters)+"m, Winkel: "+String(point.angleInDegrees))
                 
                 // Speech
-                Speech.speakPhrase(text: point.title+" ist "+String(point.distanceInMeters)+" Meter entfernt.")
+                Speech.resultPhrase(point: point)
                 
                 // UI
                 // TODO
@@ -209,7 +209,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         }
         else
         {
-            Speech.speakPhrase(text: "Keine signifikanten Punkte in diese Richtung gefunden")
+            Speech.noResultsPhrase()
         }
     }
     
