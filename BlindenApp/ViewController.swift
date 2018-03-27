@@ -15,12 +15,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     
     @IBOutlet weak var map: MKMapView!
     
-    @IBOutlet weak var latitudeLabel: UILabel!
-    @IBOutlet weak var longitudeLabel: UILabel!
-    @IBOutlet weak var courseLocation: UILabel!
-    @IBOutlet weak var compassLabel: UILabel!
-
-    @IBOutlet weak var touch_cordinate: UILabel!
+    //@IBOutlet weak var latitudeLabel: UILabel!
+    //@IBOutlet weak var longitudeLabel: UILabel!
+    //@IBOutlet weak var courseLocation: UILabel!
+    //@IBOutlet weak var compassLabel: UILabel!
     
     var currentLocation: CLLocation?
     var currentAngle: Double? = 90
@@ -42,11 +40,11 @@ class ViewController: UIViewController, CLLocationManagerDelegate
             map.setRegion(region, animated: true)
             
             print(location.course)
-            
+            /*
             latitudeLabel.text = String(location.coordinate.latitude)
             longitudeLabel.text = String(location.coordinate.longitude)
             courseLocation.text = String(location.course)
-            
+            */
             self.map.showsUserLocation = true
         }
         else
@@ -57,7 +55,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateHeading heading: CLHeading)
     {
-        compassLabel.text = String("Angle: \(heading.trueHeading)");
+        //compassLabel.text = String("Angle: \(heading.trueHeading)");
         currentAngle = heading.trueHeading
     }
     
