@@ -20,7 +20,7 @@ class Speech: NSObject, AVSpeechSynthesizerDelegate
     static func speakPhrase(text: String)
     {
         let phrase = AVSpeechUtterance(string: text)
-        phrase.rate = 0.5
+        phrase.rate = 0.55
         self.synthesizer.speak(phrase)
     }
     
@@ -32,7 +32,8 @@ class Speech: NSObject, AVSpeechSynthesizerDelegate
     
     static func startSearchPhrase()
     {
-        self.speakPhrase(text: "Suche nach Orten")
+        //self.speakPhrase(text: "Suche nach Orten")
+        print("startPhrase")
         //self.synthesizer.delegate = self
     }
     
@@ -44,7 +45,7 @@ class Speech: NSObject, AVSpeechSynthesizerDelegate
     
     static func noResultsPhrase()
     {
-        self.speakPhrase(text: "Keine signifikanten Punkte in diese Richtung gefunden")
+        self.speakPhrase(text: "Keine Orte in dieser Richtung.")
     }
     
     static func getLastSaidPOI() -> PointOfInterest
