@@ -115,11 +115,12 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         }
         
 
-        
+        /*
         let circle = CAShapeLayer()
         circle.path = circlePathWithCenter(center: CGPoint(x: 200,y: 400), radius: 50).cgPath
         circle.fillColor = UIColor.blue.cgColor
         self.view.layer.addSublayer(circle)
+        */
         
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeLeft.direction = .left
@@ -173,7 +174,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         print("Swipe Down")
     }
 }
-
+    /*
     func circlePathWithCenter(center: CGPoint, radius: CGFloat) -> UIBezierPath {
         let circlePath = UIBezierPath()
         circlePath.addArc(withCenter: center, radius: radius, startAngle: -CGFloat(Double.pi), endAngle: -CGFloat(Double.pi/2), clockwise: true)
@@ -183,7 +184,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         circlePath.close()
         return circlePath
     }
-
+     */
     
     
     override func didReceiveMemoryWarning() {
