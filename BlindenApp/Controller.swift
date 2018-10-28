@@ -53,7 +53,7 @@ class Controller
         var lastElementIndex: Int? = nil
         
         // find first element index
-        for i in stride(from: 0, through: allPOIsSorted.count, by: 1) {
+        for i in stride(from: 0, through: allPOIsSorted.count-1, by: 1) {
             if allPOIsSorted[i].angleInDegrees > currentOrientation-sliceAngle/2
             {
                 firstElementIndex = i

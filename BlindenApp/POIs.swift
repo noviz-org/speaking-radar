@@ -16,43 +16,57 @@ class POIs
     {
         if let url = GooglePlaces.getRequestUrl(lat: location.lat, lng: location.lng, radius: 500)
         {
-            URLSession.shared.dataTask(with: url, completionHandler: {
-                (data, response, error) in
-                
-                let status = (response as? HTTPURLResponse)!.statusCode;
-                if(status != 200)
-                {
-                    // Houston we have a problem
-                    print("Recieved an Error with status "+String(status)+" from the Google Places API");
+            // Handle the recieved data from the google API
+            var array: [GooglePlacesResult] = []
+            var nextPage: String = ""
+            
+            repeat
+            {
+                URLSession.shared.dataTask(with: url, completionHandler: {
+                    (data, response, error) in
                     
-                    // TODO: Further error handling: out of requests and so on.
-                }
-                else
-                {
-                    // Do something
-                    var array: [GooglePlacesResult] = []
-                    
-                    print(String(describing: data))
-                    
-                    let response: GooglePlacesResponse? = GooglePlaces.parseData(data: data!) // TODO
-                    
-                    if let safe_response: GooglePlacesResponse = response
+                    let status = (response as? HTTPURLResponse)!.statusCode;
+                    if(status != 200)
                     {
-                        for result in safe_response.results
-                        {
-                            array.append(result)
-                        }
+                        // Houston we have a problem
+                        print("Recieved an Error with status "+String(status)+" from the Google Places API");
                         
-                        // Then callback to the function
-                        Controller.gotGooglePlaces(places: array, location: location, currentOrientation: currentOrientation)
+                        // TODO: Further error handling: out of requests and so on.
                     }
                     else
                     {
-                        print("Parsing failed")
+                        print(String(describing: data))
+                        
+                        let response: GooglePlacesResponse? = GooglePlaces.parseData(data: data!) // TODO
+                        
+                        if let safe_response: GooglePlacesResponse = response
+                        {
+                            for result in safe_response.results
+                            {
+                                array.append(result);
+                            }
+                            if let token: String = safe_response.next_page_token
+                            {
+                                nextPage = token;
+                            }
+                            else
+                            {
+                                nextPage = ""; // stops the loop if there is no next page.
+                            }
+                        }
+                        else
+                        {
+                            print("Parsing failed")
+                        }
                     }
-                }
-                
-            }).resume()
+                    
+                }).resume()
+            }
+            while(!nextPage.isEmpty) // We repeat as long there is a next page or if this is the first time
+
+            
+            // Then callback to the function
+            Controller.gotGooglePlaces(places: array, location: location, currentOrientation: currentOrientation)
         }
     }
     
