@@ -14,7 +14,7 @@ class POIs
     
     static func getGooglePlaces(location: CoordinateLocation, currentOrientation: Double)
     {
-        if let url = GooglePlaces.getRequestUrl(lat: location.lat, lng: location.lng, radius: 500)
+        if var url = GooglePlaces.getRequestUrl(lat: location.lat, lng: location.lng, radius: 500)
         {
             // Handle the recieved data from the google API
             var array: [GooglePlacesResult] = []
@@ -45,14 +45,8 @@ class POIs
                             {
                                 array.append(result);
                             }
-                            if let token: String = safe_response.next_page_token
-                            {
-                                nextPage = token;
-                            }
-                            else
-                            {
-                                nextPage = ""; // stops the loop if there is no next page.
-                            }
+                            nextPage = safe_response.next_page_token;
+                            url = GooglePlaces.getPageTokenRequestUrl(token: nextPage)!;
                         }
                         else
                         {

@@ -16,6 +16,10 @@ class GooglePlaces
     {
         return URL(string: url+"key="+getKeyFromFile(fileName: "GooglePlacesKey")+"&location="+String(lat)+","+String(lng)+"&radius="+String(radius))
     }
+    static func getPageTokenRequestUrl(token: String) -> URL?
+    {
+        return URL(string: url+"key="+getKeyFromFile(fileName: "GooglePlacesKey")+"&pagetoken="+token);
+    }
     
     static func getKeyFromFile(fileName: String) -> String
     {
