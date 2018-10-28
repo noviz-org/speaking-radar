@@ -37,6 +37,8 @@ The goal of this app is to enable blind and visually impaired people to explore 
     
  - attribute to POI when it leaves field and when it enterrs
 
+## Link to google docs
+https://developers.google.com/places/web-service/search
 
 ## What information should be outputed:
 
