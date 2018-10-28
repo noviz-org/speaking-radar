@@ -14,53 +14,77 @@ class POIs
     
     static func getGooglePlaces(location: CoordinateLocation, currentOrientation: Double)
     {
-        if var url = GooglePlaces.getRequestUrl(lat: location.lat, lng: location.lng, radius: 500)
+        if let url = GooglePlaces.getRequestUrl(lat: location.lat, lng: location.lng, radius: 500)
         {
             // Handle the recieved data from the google API
-            var array: [GooglePlacesResult] = []
-            var nextPage: String = ""
             
-            repeat
+            callGoogleAPI(url: url, callback: {(data: Data?) -> Void in
+                parsePlacesAndFetchMoreRecursively(newData: data, placesArray: [], doneCallback: {(places: [GooglePlacesResult]) -> Void in
+                    
+                    print("Got "+String(places.count)+" places now.")
+                    
+                    // Calls this when we are done
+                    Controller.gotGooglePlaces(places: places, location: location, currentOrientation: currentOrientation);
+                })
+            })
+        }
+    }
+    
+    static func callGoogleAPI(url: URL, callback: @escaping (_ data: Data?) -> Void) -> Void
+    {
+        URLSession.shared.dataTask(with: url, completionHandler: {
+            (data, response, error) in
+            
+            let status = (response as? HTTPURLResponse)!.statusCode;
+            if(status != 200)
             {
-                URLSession.shared.dataTask(with: url, completionHandler: {
-                    (data, response, error) in
-                    
-                    let status = (response as? HTTPURLResponse)!.statusCode;
-                    if(status != 200)
-                    {
-                        // Houston we have a problem
-                        print("Recieved an Error with status "+String(status)+" from the Google Places API");
-                        
-                        // TODO: Further error handling: out of requests and so on.
-                    }
-                    else
-                    {
-                        print(String(describing: data))
-                        
-                        let response: GooglePlacesResponse? = GooglePlaces.parseData(data: data!) // TODO
-                        
-                        if let safe_response: GooglePlacesResponse = response
-                        {
-                            for result in safe_response.results
-                            {
-                                array.append(result);
-                            }
-                            nextPage = safe_response.next_page_token;
-                            url = GooglePlaces.getPageTokenRequestUrl(token: nextPage)!;
-                        }
-                        else
-                        {
-                            print("Parsing failed")
-                        }
-                    }
-                    
-                }).resume()
+                // Houston we have a problem
+                print("Recieved an Error with status "+String(status)+" from the Google Places API");
+                print(error!.localizedDescription);
+                
+                // TODO: Further error handling: out of requests and so on.
             }
-            while(!nextPage.isEmpty) // We repeat as long there is a next page or if this is the first time
-
+            else
+            {
+                callback(data);
+            }
             
-            // Then callback to the function
-            Controller.gotGooglePlaces(places: array, location: location, currentOrientation: currentOrientation)
+        }).resume()
+    }
+    
+    static func parsePlacesAndFetchMoreRecursively(newData: Data?, placesArray: [GooglePlacesResult], doneCallback: @escaping (_ places: [GooglePlacesResult]) -> Void)
+    {
+        let response: GooglePlacesResponse? = GooglePlaces.parseData(data: newData!) // TODO
+        var array: [GooglePlacesResult] = placesArray;
+        
+        if let safe_response: GooglePlacesResponse = response
+        {
+            array.append(contentsOf: safe_response.results)
+            
+            let nextPage = safe_response.next_page_token;
+            print("nextPage: "+nextPage)
+            if(!nextPage.isEmpty)
+            {
+                // There are more pages
+                let url = GooglePlaces.getPageTokenRequestUrl(token: nextPage)!;
+                print("Url: "+String(describing: url))
+                
+                callGoogleAPI(url: url) { (data: Data?) -> Void in
+                    parsePlacesAndFetchMoreRecursively(newData: data, placesArray: array, doneCallback: doneCallback)
+                }
+            }
+            else
+            {
+                // No more pages!
+                doneCallback(placesArray);
+            }
+        }
+        else
+        {
+            print("Parsing failed")
+            
+            // show me what you got
+            doneCallback(placesArray);
         }
     }
     

@@ -43,8 +43,9 @@ class GooglePlaces
         {
             response = try JSONDecoder().decode(GooglePlacesResponse.self, from: data)
         }
-        catch _
+        catch
         {
+            print("Parsing Error: "+error.localizedDescription)
             return nil
         }
         return response
@@ -65,14 +66,15 @@ struct GooglePlacesResponse: Codable
 struct GooglePlacesResult: Codable
 {
     var geometry: GooglePlacesGeometry
-    var icon: String
+    var icon: String?
     var id: String
     var name: String
+    var opening_hours: GooglePlacesOpeningHours?
     var place_id: String
-    var reference: String
-    var scope: String
-    var types: [String]
-    var vicinity: String
+    var reference: String?
+    var scope: String?
+    var types: [String]?
+    var vicinity: String?
 }
 
 struct GooglePlacesGeometry: Codable
@@ -85,4 +87,9 @@ struct GooglePlacesViewport: Codable
 {
     var northeast: CoordinateLocation
     var southwest: CoordinateLocation
+}
+
+struct GooglePlacesOpeningHours: Codable
+{
+    var open_now: Bool
 }
