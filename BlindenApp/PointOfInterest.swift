@@ -3,7 +3,7 @@
 //  BlindenApp
 //
 //  Created by Lukas Reitemeier on 11.03.18.
-//  Copyright © 2018 Lukas Reitemeier. All rights reserved.
+//  Copyright Copyright © 2019 NOVIZ. All rights reserved.
 //
 
 import Foundation

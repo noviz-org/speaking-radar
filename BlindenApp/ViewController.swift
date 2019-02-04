@@ -29,7 +29,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
-        print("locations: "+String(locations.count))
+        //print("locations: "+String(locations.count))
         currentLocation = locations[0]
         
         if let location = currentLocation
@@ -39,7 +39,7 @@ class ViewController: UIViewController, CLLocationManagerDelegate
             let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
             map.setRegion(region, animated: true)
             
-            print(location.course)
+            //print(location.course)
             /*
             latitudeLabel.text = String(location.coordinate.latitude)
             longitudeLabel.text = String(location.coordinate.longitude)

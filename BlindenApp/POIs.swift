@@ -3,7 +3,7 @@
 //  BlindenAppTest
 //
 //  Created by Lukas Reitemeier on 22.10.17.
-//  Copyright © 2017 Lukas Reitemeier. All rights reserved.
+//  Copyright © 2019 NOVIZ. All rights reserved.
 //
 
 import Foundation
@@ -21,7 +21,8 @@ class POIs
             callGoogleAPI(url: url, callback: {(data: Data?) -> Void in
                 parsePlacesAndFetchMoreRecursively(newData: data, placesArray: [], doneCallback: {(places: [GooglePlacesResult]) -> Void in
                     
-                    print("Got "+String(places.count)+" places now.")
+                    print("Found "+String(places.count)+" places.")
+                    //print(places);
                     
                     // Calls this when we are done
                     Controller.gotGooglePlaces(places: places, location: location, currentOrientation: currentOrientation);
@@ -54,11 +55,11 @@ class POIs
     
     static func parsePlacesAndFetchMoreRecursively(newData: Data?, placesArray: [GooglePlacesResult], doneCallback: @escaping (_ places: [GooglePlacesResult]) -> Void)
     {
-        let response: GooglePlacesResponse? = GooglePlaces.parseData(data: newData!) // TODO
-        var array: [GooglePlacesResult] = placesArray;
+        let response: GooglePlacesResponse? = GooglePlaces.parseData(data: newData) // TODO
         
         if let safe_response: GooglePlacesResponse = response
         {
+            var array: [GooglePlacesResult] = placesArray;
             array.append(contentsOf: safe_response.results)
             
             let nextPage = safe_response.next_page_token;
@@ -67,7 +68,8 @@ class POIs
             {
                 // There are more pages
                 let url = GooglePlaces.getPageTokenRequestUrl(token: nextPage)!;
-                print("Url: "+String(describing: url))
+                
+                print("next Request URL: "+url.absoluteString);
                 
                 callGoogleAPI(url: url) { (data: Data?) -> Void in
                     parsePlacesAndFetchMoreRecursively(newData: data, placesArray: array, doneCallback: doneCallback)

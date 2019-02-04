@@ -3,7 +3,7 @@
 //  BlindenAppTest
 //
 //  Created by Lukas Reitemeier on 24.02.18.
-//  Copyright © 2018 Lukas Reitemeier. All rights reserved.
+//  Copyright © 2019 NOVIZ. All rights reserved.
 //
 
 import UIKit

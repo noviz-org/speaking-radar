@@ -3,7 +3,7 @@
 //  BlindenApp
 //
 //  Created by Lukas Reitemeier on 11.03.18.
-//  Copyright © 2018 Lukas Reitemeier. All rights reserved.
+//  Copyright Copyright © 2019 NOVIZ. All rights reserved.
 //
 
 import Foundation
@@ -32,20 +32,20 @@ class Speech: NSObject, AVSpeechSynthesizerDelegate
     
     static func startSearchPhrase()
     {
-        //self.speakPhrase(text: "Suche nach Orten")
+        //self.speakPhrase(text: "Searching for places")
         print("startPhrase")
         //self.synthesizer.delegate = self
     }
     
     static func resultPhrase(point: PointOfInterest)
     {
-        self.speakPhrase(text: point.title+" ist "+String(point.distanceInMeters)+" Meter entfernt.")
+        self.speakPhrase(text: point.title+" is "+String(point.distanceInMeters)+" meters away.")
         self.poisToSay.append(point)
     }
     
     static func noResultsPhrase()
     {
-        self.speakPhrase(text: "Keine Orte in dieser Richtung.")
+        self.speakPhrase(text: "Nothing in this direction.")
     }
     
     static func getLastSaidPOI() -> PointOfInterest

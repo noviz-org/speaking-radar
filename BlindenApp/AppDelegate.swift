@@ -1,9 +1,9 @@
 //
 //  AppDelegate.swift
-//  BlindenAppTest
+//  Speaking Radar
 //
 //  Created by Lukas Reitemeier on 20.10.17.
-//  Copyright © 2017 Lukas Reitemeier. All rights reserved.
+//  Copyright © 2019 NOVIZ. All rights reserved.
 //
 
 import UIKit

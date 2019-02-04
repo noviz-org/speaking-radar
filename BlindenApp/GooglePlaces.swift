@@ -3,7 +3,7 @@
 //  BlindenApp
 //
 //  Created by Lukas Reitemeier on 24.02.18.
-//  Copyright © 2018 Lukas Reitemeier. All rights reserved.
+//  Copyright Copyright © 2019 NOVIZ. All rights reserved.
 //
 
 import Foundation
@@ -18,7 +18,8 @@ class GooglePlaces
     }
     static func getPageTokenRequestUrl(token: String) -> URL?
     {
-        return URL(string: url+"key="+getKeyFromFile(fileName: "GooglePlacesKey")+"&pagetoken="+token);
+        let urlString = url+"key="+getKeyFromFile(fileName: "GooglePlacesKey")+"&pagetoken="+token;
+        return URL(string: urlString);
     }
     
     static func getKeyFromFile(fileName: String) -> String
@@ -27,7 +28,7 @@ class GooglePlaces
         
         do {
             let str = try String(contentsOfFile: path!, encoding: String.Encoding.utf8)
-            return str.substring(to: str.index(of: "\n")!) // This is dangerous TODO fix it.
+            return str.trimmingCharacters(in: .whitespacesAndNewlines) // Removes leading and trailing whitespaces
         }
         catch
         {
@@ -36,19 +37,27 @@ class GooglePlaces
         }
     }
     
-    static func parseData(data: Data) -> GooglePlacesResponse?
+    static func parseData(data: Data?) -> GooglePlacesResponse?
     {
         let response: GooglePlacesResponse
         do
         {
-            response = try JSONDecoder().decode(GooglePlacesResponse.self, from: data)
+            if let escapeData = data
+            {
+                response = try JSONDecoder().decode(GooglePlacesResponse.self, from: escapeData)
+                return response
+            }
+            else
+            {
+                print("data is nil");
+                return nil;
+            }
         }
         catch
         {
             print("Parsing Error: "+error.localizedDescription)
             return nil
         }
-        return response
     }}
 
 
