@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GooglePlaces
+class GooglePlacesAPI
 {
     static var url: String = "https://maps.googleapis.com/maps/api/place/nearbysearch/json?"
     
@@ -52,6 +52,16 @@ class GooglePlaces
     }
 }
 
+
+
+
+struct GooglePlacesResponse: Codable
+{
+    var html_attributions: [String]
+    var next_page_token: String?
+    var results: [GooglePlacesResult]
+    var status: String
+}
 extension GooglePlacesResponse: CustomStringConvertible {
     var description: String {
         if(next_page_token != nil)
@@ -65,22 +75,6 @@ extension GooglePlacesResponse: CustomStringConvertible {
     }
 }
 
-extension GooglePlacesResult: CustomStringConvertible {
-    var description: String {
-        return "'\(name)'"
-    }
-}
-
-
-
-
-struct GooglePlacesResponse: Codable
-{
-    var html_attributions: [String]
-    var next_page_token: String?
-    var results: [GooglePlacesResult]
-    var status: String
-}
 
 struct GooglePlacesResult: Codable
 {
@@ -95,6 +89,12 @@ struct GooglePlacesResult: Codable
     var types: [String]?
     var vicinity: String?
 }
+extension GooglePlacesResult: CustomStringConvertible {
+    var description: String {
+        return "'\(name)'"
+    }
+}
+
 
 struct GooglePlacesGeometry: Codable
 {

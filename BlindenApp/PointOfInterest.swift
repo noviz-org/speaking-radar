@@ -21,14 +21,7 @@ class PointOfInterest
     var type: PointOfInterestType?
     var distanceInMeters: Int
     var angleInDegrees: Double
-    
-    /*
-    init(title: String, observerLocation: Location, targetLocation: Location)
-    {
         
-    }
- */
-    
     init(title: String, distanceInMeters: Int, angleInDegrees: Double) {
         self.title = title
         self.distanceInMeters = distanceInMeters

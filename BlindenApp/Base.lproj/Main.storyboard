@@ -35,16 +35,28 @@
                                     <constraint firstAttribute="width" constant="50" id="iTf-Pm-NrT"/>
                                 </constraints>
                             </imageView>
+                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EJq-Uq-UBB" userLabel="RadarView">
+                                <rect key="frame" x="82.5" y="233.5" width="210" height="200"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="EJq-Uq-UBB" secondAttribute="height" multiplier="240:229" id="jWv-nG-oGd"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="iWZ-f6-jAy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8CK-J7-zy9"/>
+                            <constraint firstItem="EJq-Uq-UBB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Gm1-d1-Ohn"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ONC-e3-gsp" secondAttribute="bottom" constant="20" id="UGY-Lw-dNS"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="iWZ-f6-jAy" secondAttribute="bottom" constant="20" id="hsN-Cg-g75"/>
+                            <constraint firstItem="EJq-Uq-UBB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rR6-yk-NSe"/>
                             <constraint firstItem="ONC-e3-gsp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="wav-al-elt"/>
                             <constraint firstItem="iWZ-f6-jAy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xpg-vp-lKr"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="orientationArrow" destination="ONC-e3-gsp" id="Q10-b9-FKr"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

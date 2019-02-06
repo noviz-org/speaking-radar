@@ -76,7 +76,7 @@ class LocationController: NSObject, CLLocationManagerDelegate
         //compassLabel.text = String("Angle: \(heading.trueHeading)");
         
         // Store the value
-        _locationHeading = heading.trueHeading
+        _locationHeading = heading.magneticHeading
         
         // Call the callbacks
         for callback in locationHeadingUpdateCallbacks

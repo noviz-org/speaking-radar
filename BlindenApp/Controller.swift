@@ -11,6 +11,9 @@ import CoreLocation
 
 class Controller
 {
+    var pointsOfInterest: [PointOfInterest] = []
+    var googlePlaces: [GooglePlacesResult] = []
+    
     static func loadPointsOfInterest(locationController: LocationController)
     {
         if let cllocation: CLLocation = locationController.locationCoordinates

@@ -1,9 +1,9 @@
 //
 //  ViewController.swift
-//  userLocation
+//  Speaking Radar
 //
-//  Created by Sebastian Hette on 19.09.2016.
-//  Copyright © 2016 MAGNUMIUM. All rights reserved.
+//  Created by Lukas Bühler on 06.02.2019.
+//  Copyright © 2019 NOVIZ. All rights reserved.
 //
 
 import UIKit
@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController
 {
     var locationController: LocationController? = nil
+    
+    @IBOutlet weak var orientationArrow: UIImageView!
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
@@ -46,6 +48,13 @@ class ViewController: UIViewController
         super.viewDidLoad()
         
         locationController = LocationController()
+        
+        locationController?.addLocationHeadingUpdateCallback(callback: { (_heading: Double?) in
+            if let heading: Double = _heading
+            {
+                self.orientationArrow.transform = CGAffineTransform(rotationAngle: (CGFloat(-(heading*Double.pi/180)) - CGFloat(Double.pi / 4)))
+            }
+        })
         
         // Some tapping stuff... TODO
         let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))

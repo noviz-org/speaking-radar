@@ -14,9 +14,9 @@ class POIs
     
     static func getGooglePlaces(location: Location)
     {
-        if let url = GooglePlaces.getRequestUrl(lat: location.lat, lng: location.lng, radius: 500)
+        if let url: URL = GooglePlacesAPI.getRequestUrl(lat: location.lat, lng: location.lng, radius: 500)
         {
-            // Handle the recieved data from the google API
+            // Call the Google API and return the places
             
             callGoogleAPI(url: url, callback: {(data: Data?) -> Void in
                 parsePlacesAndFetchMoreRecursively(newData: data, placesArray: [], doneCallback: {(places: [GooglePlacesResult]) -> Void in
@@ -56,7 +56,7 @@ class POIs
     
     static func parsePlacesAndFetchMoreRecursively(newData: Data?, placesArray: [GooglePlacesResult], doneCallback: @escaping (_ places: [GooglePlacesResult]) -> Void)
     {
-        if let response: GooglePlacesResponse = GooglePlaces.parseData(data: newData)
+        if let response: GooglePlacesResponse = GooglePlacesAPI.parseData(data: newData)
         {
             var array: [GooglePlacesResult] = placesArray;
             array.append(contentsOf: response.results)
@@ -65,7 +65,7 @@ class POIs
             {
                 //print("nextPage: "+nextPage)
                 // There are more pages
-                let url = GooglePlaces.getPageTokenRequestUrl(token: nextPage)!;
+                let url = GooglePlacesAPI.getPageTokenRequestUrl(token: nextPage)!;
                 
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) // creates delay before the next request for the google places api
