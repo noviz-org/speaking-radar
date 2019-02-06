@@ -7,57 +7,10 @@
 //
 
 import UIKit
-import MapKit
-import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate
+class ViewController: UIViewController
 {
-    
-    @IBOutlet weak var map: MKMapView!
-    
-    //@IBOutlet weak var latitudeLabel: UILabel!
-    //@IBOutlet weak var longitudeLabel: UILabel!
-    //@IBOutlet weak var courseLocation: UILabel!
-    //@IBOutlet weak var compassLabel: UILabel!
-    
-    var currentLocation: CLLocation?
-    var currentAngle: Double? = 90
-    
-    let manager = CLLocationManager()
-    
-    var pois: [PointOfInterest] = []
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
-    {
-        //print("locations: "+String(locations.count))
-        currentLocation = locations[0]
-        
-        if let location = currentLocation
-        {
-            let span:MKCoordinateSpan = MKCoordinateSpanMake(0.01, 0.01)
-            let myLocation:CLLocationCoordinate2D = CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude)
-            let region:MKCoordinateRegion = MKCoordinateRegionMake(myLocation, span)
-            map.setRegion(region, animated: true)
-            
-            //print(location.course)
-            /*
-            latitudeLabel.text = String(location.coordinate.latitude)
-            longitudeLabel.text = String(location.coordinate.longitude)
-            courseLocation.text = String(location.course)
-            */
-            self.map.showsUserLocation = true
-        }
-        else
-        {
-            print("cannot resolve location")
-        }
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateHeading heading: CLHeading)
-    {
-        //compassLabel.text = String("Angle: \(heading.trueHeading)");
-        currentAngle = heading.trueHeading
-    }
+    var locationController: LocationController? = nil
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
@@ -89,39 +42,17 @@ class ViewController: UIViewController, CLLocationManagerDelegate
     
     override func viewDidLoad()
     {
+        // Call the super viewDidLoad function first
         super.viewDidLoad()
         
+        locationController = LocationController()
         
-        
-        manager.delegate = self
-        manager.desiredAccuracy = kCLLocationAccuracyBest
-        manager.requestWhenInUseAuthorization()
-        manager.startUpdatingLocation()
-        manager.startUpdatingHeading()
-        
+        // Some tapping stuff... TODO
         let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
         tap.numberOfTapsRequired = 2
         view.addGestureRecognizer(tap)
         
-        // Start
-        if let location = currentLocation
-        {
-            print(location)
-            Controller.fetchAndReturnPointsOfInterest(location: CoordinateLocation(lat: location.coordinate.latitude, lng: location.coordinate.longitude), currentOrientation: currentAngle!)
-        }
-        else
-        {
-            print("cannot resolve location")
-        }
-        
-
-        /*
-        let circle = CAShapeLayer()
-        circle.path = circlePathWithCenter(center: CGPoint(x: 200,y: 400), radius: 50).cgPath
-        circle.fillColor = UIColor.blue.cgColor
-        self.view.layer.addSublayer(circle)
-        */
-        
+        // Gestures
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
         swipeLeft.direction = .left
         self.view.addGestureRecognizer(swipeLeft)
@@ -139,59 +70,35 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         self.view.addGestureRecognizer(swipeDown)
     }
 
+    // Actual gesture handeling
     @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
     if gesture.direction == UISwipeGestureRecognizerDirection.right {
-        print("Swipe Right")
+        //print("Swipe Right")
     }
     else if gesture.direction == UISwipeGestureRecognizerDirection.left {
-        print("Swipe Left")
+        //print("Swipe Left")
     }
     else if gesture.direction == UISwipeGestureRecognizerDirection.up {
-        print("Swipe Up")
+        //print("Swipe Up")
         
-        print("AVSpeechSynthesizer_Status:")
-        print(Speech.synthesizer.isSpeaking)
-        
-        if (Speech.synthesizer.isSpeaking) {
-            Speech.synthesizer.stopSpeaking(at: .immediate)
-            print("was speaking, is now stoped")
-        }
-        else {
-            print("is not speaking")
-        }
-        
-        
-        if let location = currentLocation
+        if let lc = locationController
         {
-            Controller.fetchAndReturnPointsOfInterest(location: CoordinateLocation(lat: location.coordinate.latitude, lng: location.coordinate.longitude), currentOrientation: currentAngle!)
+            Controller.loadPointsOfInterest(locationController: lc)
         }
         else
         {
-            print("cannot resolve location")
+            print("LocationController is nil")
         }
     }
     else if gesture.direction == UISwipeGestureRecognizerDirection.down {
-        print("Swipe Down")
+        //print("Swipe Down")
     }
 }
-    /*
-    func circlePathWithCenter(center: CGPoint, radius: CGFloat) -> UIBezierPath {
-        let circlePath = UIBezierPath()
-        circlePath.addArc(withCenter: center, radius: radius, startAngle: -CGFloat(Double.pi), endAngle: -CGFloat(Double.pi/2), clockwise: true)
-        circlePath.addArc(withCenter: center, radius: radius, startAngle: -CGFloat(Double.pi/2), endAngle: 0, clockwise: true)
-        circlePath.addArc(withCenter: center, radius: radius, startAngle: 0, endAngle: CGFloat(Double.pi/2), clockwise: true)
-        circlePath.addArc(withCenter: center, radius: radius, startAngle: CGFloat(Double.pi/2), endAngle: CGFloat(Double.pi), clockwise: true)
-        circlePath.close()
-        return circlePath
-    }
-     */
     
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
     
-    static func outputPointsOfInterest(pointsOfInterest: [PointOfInterest])
+    // This function handles all the output (display and speaking) of the Points of Interest
+    static func updateView(pointsOfInterest: [PointOfInterest])
     {
         if(pointsOfInterest.count > 0)
         {
@@ -212,6 +119,10 @@ class ViewController: UIViewController, CLLocationManagerDelegate
         }
     }
     
+    // Overriding the Memory warining, nothing special yet
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
 }
 
 

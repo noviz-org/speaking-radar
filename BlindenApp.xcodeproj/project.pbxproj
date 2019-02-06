@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0728108920417784006E61C4 /* Draw.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0728108820417784006E61C4 /* Draw.swift */; };
 		0728108B204177F6006E61C4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0728108A204177F6006E61C4 /* Default-568h@2x.png */; };
 		074DA2BA2055C70100981831 /* PointOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074DA2B92055C70100981831 /* PointOfInterest.swift */; };
 		074DA2BC2055CB6B00981831 /* Speech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074DA2BB2055CB6B00981831 /* Speech.swift */; };
@@ -21,11 +20,12 @@
 		07CBBB8D1F99EF51006EAC56 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 07CBBB8B1F99EF51006EAC56 /* LaunchScreen.storyboard */; };
 		07CBBBB21F9A04B4006EAC56 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CBBBB11F9A04B4006EAC56 /* MapKit.framework */; };
 		07CBBBB41F9A0817006EAC56 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CBBBB31F9A0817006EAC56 /* CoreLocation.framework */; };
+		8075DBF1220B14AA00B037E8 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075DBF0220B14AA00B037E8 /* LocationController.swift */; };
+		8075DBF3220B1C4A00B037E8 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075DBF2220B1C4A00B037E8 /* Location.swift */; };
 		80ACB691205D7F7700501C7D /* GooglePlacesKey.txt in Resources */ = {isa = PBXBuildFile; fileRef = 80ACB690205D7F7700501C7D /* GooglePlacesKey.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0728108820417784006E61C4 /* Draw.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Draw.swift; sourceTree = "<group>"; };
 		0728108A204177F6006E61C4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		074DA2B92055C70100981831 /* PointOfInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterest.swift; sourceTree = "<group>"; };
 		074DA2BB2055CB6B00981831 /* Speech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speech.swift; sourceTree = "<group>"; };
@@ -41,6 +41,8 @@
 		07CBBB8E1F99EF51006EAC56 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		07CBBBB11F9A04B4006EAC56 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		07CBBBB31F9A0817006EAC56 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		8075DBF0220B14AA00B037E8 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
+		8075DBF2220B1C4A00B037E8 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		80ACB690205D7F7700501C7D /* GooglePlacesKey.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = GooglePlacesKey.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,16 +83,17 @@
 				80ACB68F205D7F4700501C7D /* keys */,
 				07CBBB821F99EF51006EAC56 /* AppDelegate.swift */,
 				07CBBB841F99EF51006EAC56 /* ViewController.swift */,
-				07CBBB861F99EF51006EAC56 /* Main.storyboard */,
-				0728108820417784006E61C4 /* Draw.swift */,
-				079F167F1F9CFAC100372913 /* POIs.swift */,
-				07CBBB891F99EF51006EAC56 /* Assets.xcassets */,
-				07CBBB8B1F99EF51006EAC56 /* LaunchScreen.storyboard */,
-				07CBBB8E1F99EF51006EAC56 /* Info.plist */,
+				07A7390D2059B4400001DA2A /* Controller.swift */,
+				8075DBF0220B14AA00B037E8 /* LocationController.swift */,
+				8075DBF2220B1C4A00B037E8 /* Location.swift */,
 				07BAB7572041AC200010A059 /* GooglePlaces.swift */,
+				079F167F1F9CFAC100372913 /* POIs.swift */,
 				074DA2B92055C70100981831 /* PointOfInterest.swift */,
 				074DA2BB2055CB6B00981831 /* Speech.swift */,
-				07A7390D2059B4400001DA2A /* Controller.swift */,
+				07CBBB8E1F99EF51006EAC56 /* Info.plist */,
+				07CBBB861F99EF51006EAC56 /* Main.storyboard */,
+				07CBBB8B1F99EF51006EAC56 /* LaunchScreen.storyboard */,
+				07CBBB891F99EF51006EAC56 /* Assets.xcassets */,
 			);
 			path = BlindenApp;
 			sourceTree = "<group>";
@@ -193,12 +196,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8075DBF1220B14AA00B037E8 /* LocationController.swift in Sources */,
 				074DA2BA2055C70100981831 /* PointOfInterest.swift in Sources */,
 				079F16801F9CFAC100372913 /* POIs.swift in Sources */,
 				07CBBB851F99EF51006EAC56 /* ViewController.swift in Sources */,
+				8075DBF3220B1C4A00B037E8 /* Location.swift in Sources */,
 				07CBBB831F99EF51006EAC56 /* AppDelegate.swift in Sources */,
 				07BAB7582041AC200010A059 /* GooglePlaces.swift in Sources */,
-				0728108920417784006E61C4 /* Draw.swift in Sources */,
 				074DA2BC2055CB6B00981831 /* Speech.swift in Sources */,
 				07A7390E2059B4400001DA2A /* Controller.swift in Sources */,
 			);

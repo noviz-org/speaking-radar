@@ -7,34 +7,43 @@
 //
 
 import Foundation
+import CoreLocation
 
 class Controller
 {
-    static func fetchAndReturnPointsOfInterest(location: CoordinateLocation, currentOrientation: Double)
+    static func loadPointsOfInterest(locationController: LocationController)
     {
-        // Get and output
-        print("lat: "+String(location.lat)+", lng: "+String(location.lng)+", heading: \(currentOrientation)")
-        
-        // Zürich: CoordinateLocation(lat: 47.366696, lng: 8.545235)
-        
-        Speech.startSearchPhrase()
-        
-        
-        // Start fetching the Google Places.
-        POIs.getGooglePlaces(location: location, currentOrientation: currentOrientation);
+        if let cllocation: CLLocation = locationController.locationCoordinates
+        {
+            // We can access the location
+            
+            // Tell the user that we are loading
+            Speech.startSearchPhrase()
+            
+            POIs.getGooglePlaces(location: Location(loc: cllocation))
+        }
+        else
+        {
+            // We cannot access the location
+            print("ERROR: Cannot resolve location")
+            
+            // Tell the user that we can't access the location.
+            // Speech...
+        }
+
     }
     
-    static func gotGooglePlaces(places: [GooglePlacesResult], location: CoordinateLocation, currentOrientation: Double)
+    static func gotGooglePlaces(places: [GooglePlacesResult], location: Location)
     {
-        print("current orientation: "+String(currentOrientation))
-        
         let points = sortPOIsForAngle(pois: POIs.makePOIsFromGooglePlaces(currentLocation: location, googlePlaces: places))
         
-        let slicedPoints = getPOIsInPizzaSlice(allPOIsSorted: points, currentOrientation: currentOrientation, sliceAngle: 45)
+        print(points)
+        
+        let slicedPoints = getPOIsInPizzaSlice(allPOIsSorted: points, sliceAngle: 45)
         
         let sortedPoints = sortPOIsForDistance(pois: slicedPoints)
 
-        ViewController.outputPointsOfInterest(pointsOfInterest: sortedPoints)
+        ViewController.updateView(pointsOfInterest: sortedPoints)
     }
     
     static func sortPOIsForAngle(pois: [PointOfInterest]) -> [PointOfInterest]
@@ -46,8 +55,10 @@ class Controller
         return pois.sorted(by: { $0.distanceInMeters < $1.distanceInMeters })
     }
     
-    static func getPOIsInPizzaSlice(allPOIsSorted: [PointOfInterest], currentOrientation: Double, sliceAngle: Double) -> [PointOfInterest] // returned array might be empty
+    static func getPOIsInPizzaSlice(allPOIsSorted: [PointOfInterest], sliceAngle: Double) -> [PointOfInterest] // returned array might be empty
     {
+        let currentOrientation: Double = 180//ViewController.getHeading()
+        
         // return all POIs in the pizza slice
         var firstElementIndex: Int? = nil
         var lastElementIndex: Int? = nil
@@ -90,6 +101,7 @@ class Controller
         
         return elements
     }
+    
     
 }
 

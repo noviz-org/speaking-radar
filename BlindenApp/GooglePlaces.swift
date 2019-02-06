@@ -39,26 +39,37 @@ class GooglePlaces
     
     static func parseData(data: Data?) -> GooglePlacesResponse?
     {
-        let response: GooglePlacesResponse
         do
         {
-            if let escapeData = data
-            {
-                response = try JSONDecoder().decode(GooglePlacesResponse.self, from: escapeData)
-                return response
-            }
-            else
-            {
-                print("data is nil");
-                return nil;
-            }
+            let response = try JSONDecoder().decode(GooglePlacesResponse.self, from: data!)
+            return response
         }
         catch
         {
             print("Parsing Error: "+error.localizedDescription)
             return nil
         }
-    }}
+    }
+}
+
+extension GooglePlacesResponse: CustomStringConvertible {
+    var description: String {
+        if(next_page_token != nil)
+        {
+            return "results=\(results), next_page_token='\(next_page_token!)'"
+        }
+        else
+        {
+            return "results=\(results) (No more results)"
+        }
+    }
+}
+
+extension GooglePlacesResult: CustomStringConvertible {
+    var description: String {
+        return "'\(name)'"
+    }
+}
 
 
 
@@ -66,10 +77,9 @@ class GooglePlaces
 struct GooglePlacesResponse: Codable
 {
     var html_attributions: [String]
-    var next_page_token: String
-    
+    var next_page_token: String?
     var results: [GooglePlacesResult]
-    
+    var status: String
 }
 
 struct GooglePlacesResult: Codable
@@ -88,14 +98,14 @@ struct GooglePlacesResult: Codable
 
 struct GooglePlacesGeometry: Codable
 {
-    var location: CoordinateLocation
+    var location: Location
     var viewport: GooglePlacesViewport
 }
 
 struct GooglePlacesViewport: Codable
 {
-    var northeast: CoordinateLocation
-    var southwest: CoordinateLocation
+    var northeast: Location
+    var southwest: Location
 }
 
 struct GooglePlacesOpeningHours: Codable
