@@ -23,7 +23,12 @@ class Controller
             // Tell the user that we are loading
             Speech.startSearchPhrase()
             
-            POIs.getGooglePlaces(location: Location(loc: cllocation))
+            POIs.getPointsOfInterestAsync(location: Location(loc: cllocation), radius: 500, callback:
+            {
+                (pointsOfInterest) in
+                
+            })
+            
         }
         else
         {
