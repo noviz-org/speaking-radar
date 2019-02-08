@@ -1,8 +1,8 @@
 # Speaking Radar (iOS App)
 
-The "Speaking Radar" is a iOS App for blind and visually impaired people.
-It tells you what points of interest are around you using your GPS and compass.
-The goal of this app is to enable blind and visually impaired people to explore the world around them.
+The "Speaking Radar" is an iOS App aimed for visually impaired people.
+It can tell you what points of interest are around you by reading them aloud. The app is controlled intuitively by swiping and tapping.
+The goal of this app is to help visually impaired people find interesting locations around them.
 
 ## Bugnplay
 This is a project created for the Swiss [Bugnplay](http://bugnplay.ch/) Competition 2018.
