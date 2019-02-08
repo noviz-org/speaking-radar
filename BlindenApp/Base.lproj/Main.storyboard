@@ -21,41 +21,43 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="position_dot" translatesAutoresizingMaskIntoConstraints="NO" id="iWZ-f6-jAy">
-                                <rect key="frame" x="137.5" y="547" width="100" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="Jhd-Cw-cMC"/>
-                                    <constraint firstAttribute="width" secondItem="iWZ-f6-jAy" secondAttribute="height" multiplier="1:1" id="k66-Yq-tOk"/>
-                                </constraints>
-                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="ONC-e3-gsp">
-                                <rect key="frame" x="21" y="597" width="50" height="50"/>
+                                <rect key="frame" x="21" y="30" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ONC-e3-gsp" secondAttribute="height" multiplier="1:1" id="bsF-Fy-zOw"/>
                                     <constraint firstAttribute="width" constant="50" id="iTf-Pm-NrT"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="EJq-Uq-UBB" userLabel="RadarView">
-                                <rect key="frame" x="82.5" y="233.5" width="210" height="200"/>
-                                <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="position_dot" translatesAutoresizingMaskIntoConstraints="NO" id="iWZ-f6-jAy">
+                                <rect key="frame" x="162.5" y="308.5" width="50" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="EJq-Uq-UBB" secondAttribute="height" multiplier="240:229" id="jWv-nG-oGd"/>
+                                    <constraint firstAttribute="height" constant="50" id="Jhd-Cw-cMC"/>
+                                    <constraint firstAttribute="width" secondItem="iWZ-f6-jAy" secondAttribute="height" multiplier="1:1" id="k66-Yq-tOk"/>
+                                </constraints>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EJq-Uq-UBB" userLabel="RadarView" customClass="RadarView" customModule="BlindenApp" customModuleProvider="target">
+                                <rect key="frame" x="36" y="182" width="303" height="303"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="EJq-Uq-UBB" secondAttribute="height" multiplier="1:1" id="P1j-0x-g0G"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="EJq-Uq-UBB" secondAttribute="trailing" constant="20" id="3vW-t4-rP9"/>
                             <constraint firstItem="iWZ-f6-jAy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8CK-J7-zy9"/>
+                            <constraint firstItem="ONC-e3-gsp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="30" id="Aow-MG-rJ7"/>
+                            <constraint firstItem="EJq-Uq-UBB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="CBf-cH-uD2"/>
+                            <constraint firstItem="iWZ-f6-jAy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="EMa-4q-VYH"/>
                             <constraint firstItem="EJq-Uq-UBB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Gm1-d1-Ohn"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="ONC-e3-gsp" secondAttribute="bottom" constant="20" id="UGY-Lw-dNS"/>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="iWZ-f6-jAy" secondAttribute="bottom" constant="20" id="hsN-Cg-g75"/>
                             <constraint firstItem="EJq-Uq-UBB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rR6-yk-NSe"/>
                             <constraint firstItem="ONC-e3-gsp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="wav-al-elt"/>
-                            <constraint firstItem="iWZ-f6-jAy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="xpg-vp-lKr"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="orientationArrow" destination="ONC-e3-gsp" id="Q10-b9-FKr"/>
+                        <outlet property="radarView" destination="EJq-Uq-UBB" id="ReM-LU-BhN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

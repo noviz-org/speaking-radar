@@ -11,12 +11,33 @@ import CoreLocation
 
 class Controller
 {
-    var pointsOfInterest: [PointOfInterest] = []
-    var googlePlaces: [GooglePlacesResult] = []
-    
-    static func loadPointsOfInterest(locationController: LocationController)
+    let viewController: ViewController
+    let locationController: LocationController
+
+    init(vc: ViewController)
     {
-        if let cllocation: CLLocation = locationController.locationCoordinates
+        viewController = vc
+        locationController = LocationController() // Initialise the LocationController
+        
+        locationController.addLocationHeadingUpdateCallback(callback: { (_heading: Double?) in
+            if let heading: Double = _heading
+            {
+                self.viewController.updateOrientationArrow(heading: heading)
+            }
+        })
+        locationController.addLocationHeadingUpdateCallback(callback: { (_heading: Double?) in
+            if let heading: Double = _heading
+            {
+                self.viewController.updateRadarHeading(heading: heading)
+            }
+        })
+    }
+    
+    var pointsOfInterest: [PointOfInterest] = []
+    
+    func loadPointsOfInterest()
+    {
+        if let cllocation: CLLocation = self.locationController.locationCoordinates
         {
             // We can access the location
             
@@ -25,8 +46,11 @@ class Controller
             
             POIs.getPointsOfInterestAsync(location: Location(loc: cllocation), radius: 500, callback:
             {
-                (pointsOfInterest) in
+                (_pointsOfInterest) in
+                print(_pointsOfInterest)
                 
+                self.pointsOfInterest = _pointsOfInterest
+                self.viewController.updateRadarPoints(pois: self.pointsOfInterest)
             })
             
         }
@@ -41,29 +65,16 @@ class Controller
 
     }
     
-    static func gotGooglePlaces(places: [GooglePlacesResult], location: Location)
-    {
-        let points = sortPOIsForAngle(pois: POIs.makePOIsFromGooglePlaces(currentLocation: location, googlePlaces: places))
-        
-        print(points)
-        
-        let slicedPoints = getPOIsInPizzaSlice(allPOIsSorted: points, sliceAngle: 45)
-        
-        let sortedPoints = sortPOIsForDistance(pois: slicedPoints)
-
-        ViewController.updateView(pointsOfInterest: sortedPoints)
-    }
-    
-    static func sortPOIsForAngle(pois: [PointOfInterest]) -> [PointOfInterest]
+    func sortPOIsForAngle(pois: [PointOfInterest]) -> [PointOfInterest]
     {
         return pois.sorted(by: { $0.angleInDegrees < $1.angleInDegrees })
     }
-    static func sortPOIsForDistance(pois: [PointOfInterest]) -> [PointOfInterest]
+    func sortPOIsForDistance(pois: [PointOfInterest]) -> [PointOfInterest]
     {
         return pois.sorted(by: { $0.distanceInMeters < $1.distanceInMeters })
     }
     
-    static func getPOIsInPizzaSlice(allPOIsSorted: [PointOfInterest], sliceAngle: Double) -> [PointOfInterest] // returned array might be empty
+    func getPOIsInPizzaSlice(allPOIsSorted: [PointOfInterest], sliceAngle: Double) -> [PointOfInterest] // returned array might be empty
     {
         let currentOrientation: Double = 180//ViewController.getHeading()
         

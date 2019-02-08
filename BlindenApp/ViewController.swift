@@ -9,10 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController
-{
-    var locationController: LocationController? = nil
-    
+{    
     @IBOutlet weak var orientationArrow: UIImageView!
+    
+    @IBOutlet weak var radarView: RadarView!
+    
+    var controller: Controller? = nil
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
@@ -47,14 +49,7 @@ class ViewController: UIViewController
         // Call the super viewDidLoad function first
         super.viewDidLoad()
         
-        locationController = LocationController()
-        
-        locationController?.addLocationHeadingUpdateCallback(callback: { (_heading: Double?) in
-            if let heading: Double = _heading
-            {
-                self.orientationArrow.transform = CGAffineTransform(rotationAngle: (CGFloat(-(heading*Double.pi/180)) - CGFloat(Double.pi / 4)))
-            }
-        })
+        controller = Controller(vc: self)
         
         // Some tapping stuff... TODO
         let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
@@ -80,32 +75,54 @@ class ViewController: UIViewController
     }
 
     // Actual gesture handeling
-    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void {
-    if gesture.direction == UISwipeGestureRecognizerDirection.right {
-        //print("Swipe Right")
-    }
-    else if gesture.direction == UISwipeGestureRecognizerDirection.left {
-        //print("Swipe Left")
-    }
-    else if gesture.direction == UISwipeGestureRecognizerDirection.up {
-        //print("Swipe Up")
-        
-        if let lc = locationController
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void
+    {
+        if gesture.direction == UISwipeGestureRecognizerDirection.right
         {
-            Controller.loadPointsOfInterest(locationController: lc)
+            //print("Swipe Right")
         }
-        else
+        else if gesture.direction == UISwipeGestureRecognizerDirection.left
         {
-            print("LocationController is nil")
+            //print("Swipe Left")
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.up
+        {
+            //print("Swipe Up")
+            
+            if let controller = self.controller
+            {
+                controller.loadPointsOfInterest()
+            }
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.down {
+            //print("Swipe Down")
         }
     }
-    else if gesture.direction == UISwipeGestureRecognizerDirection.down {
-        //print("Swipe Down")
+    
+    func updateRadarPoints(pois: [PointOfInterest]) -> Void
+    {
+        DispatchQueue.main.async {
+            self.radarView.pointsOfInterest = pois;
+            self.radarView.setNeedsDisplay() // redraw
+        }
     }
-}
+    func updateRadarHeading(heading: Double) -> Void
+    {
+        DispatchQueue.main.async
+            {
+            self.radarView.heading = heading
+            self.radarView.setNeedsDisplay() // redraw
+        }
+    }
+    
+    func updateOrientationArrow(heading: Double)
+    {
+        self.orientationArrow.transform = CGAffineTransform(rotationAngle: (CGFloat(-(heading*Double.pi/180)) - CGFloat(Double.pi / 4)))
+    }
     
     
     
+    /*
     // This function handles all the output (display and speaking) of the Points of Interest
     static func updateView(pointsOfInterest: [PointOfInterest])
     {
@@ -127,6 +144,7 @@ class ViewController: UIViewController
             Speech.noResultsPhrase()
         }
     }
+ */
     
     // Overriding the Memory warining, nothing special yet
     override func didReceiveMemoryWarning() {

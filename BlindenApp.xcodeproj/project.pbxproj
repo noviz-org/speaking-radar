@@ -22,6 +22,7 @@
 		07CBBBB41F9A0817006EAC56 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 07CBBBB31F9A0817006EAC56 /* CoreLocation.framework */; };
 		8075DBF1220B14AA00B037E8 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075DBF0220B14AA00B037E8 /* LocationController.swift */; };
 		8075DBF3220B1C4A00B037E8 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075DBF2220B1C4A00B037E8 /* Location.swift */; };
+		8075DBF5220CDCF800B037E8 /* RadarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075DBF4220CDCF800B037E8 /* RadarView.swift */; };
 		80ACB691205D7F7700501C7D /* GooglePlacesKey.txt in Resources */ = {isa = PBXBuildFile; fileRef = 80ACB690205D7F7700501C7D /* GooglePlacesKey.txt */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		07CBBBB31F9A0817006EAC56 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		8075DBF0220B14AA00B037E8 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		8075DBF2220B1C4A00B037E8 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
+		8075DBF4220CDCF800B037E8 /* RadarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarView.swift; sourceTree = "<group>"; };
 		80ACB690205D7F7700501C7D /* GooglePlacesKey.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = GooglePlacesKey.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -83,6 +85,7 @@
 				80ACB68F205D7F4700501C7D /* keys */,
 				07CBBB821F99EF51006EAC56 /* AppDelegate.swift */,
 				07CBBB841F99EF51006EAC56 /* ViewController.swift */,
+				8075DBF4220CDCF800B037E8 /* RadarView.swift */,
 				07A7390D2059B4400001DA2A /* Controller.swift */,
 				8075DBF0220B14AA00B037E8 /* LocationController.swift */,
 				8075DBF2220B1C4A00B037E8 /* Location.swift */,
@@ -201,6 +204,7 @@
 				079F16801F9CFAC100372913 /* POIs.swift in Sources */,
 				07CBBB851F99EF51006EAC56 /* ViewController.swift in Sources */,
 				8075DBF3220B1C4A00B037E8 /* Location.swift in Sources */,
+				8075DBF5220CDCF800B037E8 /* RadarView.swift in Sources */,
 				07CBBB831F99EF51006EAC56 /* AppDelegate.swift in Sources */,
 				07BAB7582041AC200010A059 /* GooglePlaces.swift in Sources */,
 				074DA2BC2055CB6B00981831 /* Speech.swift in Sources */,

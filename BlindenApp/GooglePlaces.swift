@@ -130,6 +130,18 @@ class GooglePlacesAPI
             return nil
         }
     }
+    
+    static func filterOnlyPlaceOfInterestGooglePlaces(places: [GooglePlacesResult]) -> [GooglePlacesResult]
+    {
+        return places.filter
+        {
+            if let types = $0.types
+            {
+                return types.contains("point_of_interest")
+            }
+            return false
+        };
+    }
 }
 
 

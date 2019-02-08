@@ -21,11 +21,31 @@ class PointOfInterest
     var type: PointOfInterestType?
     var distanceInMeters: Int
     var angleInDegrees: Double
-        
+    
     init(title: String, distanceInMeters: Int, angleInDegrees: Double) {
         self.title = title
         self.distanceInMeters = distanceInMeters
         self.angleInDegrees = angleInDegrees
+    }
+    init(observerLocation: Location, googlePlace: GooglePlacesResult)
+    {
+        self.title = googlePlace.name
+        
+        self.distanceInMeters = Int(Location.calculateDistanceBetweenPointsInMeters(loc1: observerLocation, loc2: googlePlace.geometry.location).rounded())
+        
+        self.angleInDegrees = Location.claculateAngleToLongitudeInDegrees(currentLocation: observerLocation, pointLocation: googlePlace.geometry.location)
+        
+        if let types = googlePlace.types
+        {
+            if (types.contains("restaurant"))
+            {
+                self.type = PointOfInterestType.restaurant
+            }
+            else if (types.contains("store"))
+            {
+                self.type = PointOfInterestType.store
+            }
+        }
     }
 }
 
@@ -37,5 +57,5 @@ extension PointOfInterest: CustomStringConvertible {
 
 enum PointOfInterestType
 {
-    case restaurant, cafe, clothing_store
+    case restaurant, store
 }
