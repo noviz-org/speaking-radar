@@ -16,6 +16,7 @@ class ViewController: UIViewController
     
     var controller: Controller? = nil
     
+    /*
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         if let touch = touches.first {
             let position = touch.location(in: view)
@@ -28,6 +29,7 @@ class ViewController: UIViewController
             print(position)
         }
     }
+    */
     
     @objc func doubleTapped() {
         // double tap found.
@@ -91,7 +93,7 @@ class ViewController: UIViewController
             
             if let controller = self.controller
             {
-                controller.loadPointsOfInterest()
+                controller.loadGooglePlaces()
             }
         }
         else if gesture.direction == UISwipeGestureRecognizerDirection.down {

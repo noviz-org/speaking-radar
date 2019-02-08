@@ -13,6 +13,9 @@ class Controller
 {
     let viewController: ViewController
     let locationController: LocationController
+    
+    var googlePlaces: [GooglePlacesResult] = []
+    var pointsOfInterest: [PointOfInterest] = []
 
     init(vc: ViewController)
     {
@@ -31,28 +34,42 @@ class Controller
                 self.viewController.updateRadarHeading(heading: heading)
             }
         })
+        
+        locationController.addLocationCoordinatesUpdateCallback(callback: { (_location: CLLocation?) in
+            
+            if let location = _location
+            {
+                self.pointsOfInterest = POIs.makePOIsFromGooglePlaces(currentLocation: Location(loc: location), googlePlaces: self.googlePlaces)
+                self.viewController.updateRadarPoints(pois: self.pointsOfInterest)
+            }
+        })
     }
     
-    var pointsOfInterest: [PointOfInterest] = []
-    
-    func loadPointsOfInterest()
+    func loadGooglePlaces()
     {
+        Speech.speakLoadingPointsOfInterest()
+        
+        // Saves the google Places in the local variable
         if let cllocation: CLLocation = self.locationController.locationCoordinates
         {
-            // We can access the location
-            
-            // Tell the user that we are loading
-            Speech.startSearchPhrase()
-            
-            POIs.getPointsOfInterestAsync(location: Location(loc: cllocation), radius: 500, callback:
-            {
-                (_pointsOfInterest) in
-                print(_pointsOfInterest)
-                
-                self.pointsOfInterest = _pointsOfInterest
-                self.viewController.updateRadarPoints(pois: self.pointsOfInterest)
+            // Call the Google Places API
+            let radius = 500
+            GooglePlacesAPI.getGooglePlaces(location: Location(loc: cllocation), radius: radius, callback:
+                {
+                    (places) in
+                    // We recieved the GooglePlaces
+                    
+                    self.googlePlaces = places
+                    
+                    // Also make the points of interest
+                    if let cllocation: CLLocation = self.locationController.locationCoordinates
+                    {
+                        // We do this again to make sure to use the updated location
+                        self.pointsOfInterest = POIs.makePOIsFromGooglePlaces(currentLocation: Location(loc: cllocation), googlePlaces: self.googlePlaces)
+                        
+                        Speech.speakDoneLoading(poi_count: self.pointsOfInterest.count, radius: radius)
+                    }
             })
-            
         }
         else
         {
@@ -62,9 +79,7 @@ class Controller
             // Tell the user that we can't access the location.
             // Speech...
         }
-
     }
-    
     func sortPOIsForAngle(pois: [PointOfInterest]) -> [PointOfInterest]
     {
         return pois.sorted(by: { $0.angleInDegrees < $1.angleInDegrees })

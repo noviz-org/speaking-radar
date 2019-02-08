@@ -17,7 +17,7 @@ class Speech: NSObject, AVSpeechSynthesizerDelegate
     static let synthesizer = AVSpeechSynthesizer()
     
     
-    static func speakPhrase(text: String)
+    static func sayPhrase(text: String)
     {
         let phrase = AVSpeechUtterance(string: text)
         phrase.rate = 0.5
@@ -30,22 +30,27 @@ class Speech: NSObject, AVSpeechSynthesizerDelegate
         print("saying: "+utterance.attributedSpeechString.string)
     }
     
-    static func startSearchPhrase()
+    static func speakLoadingPointsOfInterest()
     {
-        //self.speakPhrase(text: "Searching for places")
-        print("startPhrase")
+        self.sayPhrase(text: "Loading points of interest")
+        //print("startPhrase")
         //self.synthesizer.delegate = self
+    }
+    
+    static func speakDoneLoading(poi_count: Int, radius: Int)
+    {
+        self.sayPhrase(text: "Done. Found \(poi_count) points of interest in a radius of \(radius) meters ")
     }
     
     static func resultPhrase(point: PointOfInterest)
     {
-        self.speakPhrase(text: point.title+" is "+String(point.distanceInMeters)+" meters away.")
+        self.sayPhrase(text: point.title+" is "+String(point.distanceInMeters)+" meters away.")
         self.poisToSay.append(point)
     }
     
     static func noResultsPhrase()
     {
-        self.speakPhrase(text: "Nothing in this direction.")
+        self.sayPhrase(text: "Nothing in this direction.")
     }
     
     static func getLastSaidPOI() -> PointOfInterest

@@ -13,15 +13,7 @@ class POIs
 {
     static func getPointsOfInterestAsync(location: Location, radius: Int, callback: @escaping ([PointOfInterest]) -> Void)
     {
-        // Call the Google Places API
-        GooglePlacesAPI.getGooglePlaces(location: location, radius: radius, callback:
-        {
-            (places) in
-            // We recieved the GooglePlaces
-            
-            // Call the callback with the new fetched points
-            callback(makePOIsFromGooglePlaces(currentLocation: location, googlePlaces: GooglePlacesAPI.filterOnlyPlaceOfInterestGooglePlaces(places: places)))
-        })
+        
     }
     
     // Takes in a GooglePlaces Array and returns a PointOfInterest Array
