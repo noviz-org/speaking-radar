@@ -16,11 +16,18 @@ class Controller
     
     var googlePlaces: [GooglePlacesResult] = []
     var pointsOfInterest: [PointOfInterest] = []
+    var sectionAngle: Double = 45.0
 
     init(vc: ViewController)
     {
         viewController = vc
         locationController = LocationController() // Initialise the LocationController
+        
+        // Set the section angle
+        self.viewController.setRadarSectionAngle(angle: self.sectionAngle)
+        
+        
+        // Add the callbacks to call when updating the location coordinates and heading
         
         locationController.addLocationHeadingUpdateCallback(callback: { (_heading: Double?) in
             if let heading: Double = _heading
@@ -28,6 +35,7 @@ class Controller
                 self.viewController.updateOrientationArrow(heading: heading)
             }
         })
+        
         locationController.addLocationHeadingUpdateCallback(callback: { (_heading: Double?) in
             if let heading: Double = _heading
             {
@@ -82,6 +90,18 @@ class Controller
         }
     }
     
+    func speakSection()
+    {
+        // Get section points of interest
+        var pois: [PointOfInterest] = self.getPointsOfInterestInSection(pointsOfInterest: self.pointsOfInterest)
+        
+        // Sort them by distance (closest first)
+        pois = self.sortPOIsForDistance(pois: pois)
+        
+        // Speak them
+        Speech.speakPointsOfInterestSection(radius_sorted_points: pois)
+    }
+    
     
     func sortPOIsForAngle(pois: [PointOfInterest]) -> [PointOfInterest]
     {
@@ -92,54 +112,60 @@ class Controller
         return pois.sorted(by: { $0.distanceInMeters < $1.distanceInMeters })
     }
     
-    func getPOIsInPizzaSlice(allPOIsSorted: [PointOfInterest], sliceAngle: Double) -> [PointOfInterest] // returned array might be empty
+    func getPointsOfInterestInSection(pointsOfInterest: [PointOfInterest]) -> [PointOfInterest] // returned array might be empty
     {
-        let currentOrientation: Double = 180//ViewController.getHeading()
+        let points = sortPOIsForAngle(pois: pointsOfInterest)
         
-        // return all POIs in the pizza slice
-        var firstElementIndex: Int? = nil
-        var lastElementIndex: Int? = nil
-        
-        // find first element index
-        for i in stride(from: 0, through: allPOIsSorted.count-1, by: 1) {
-            if allPOIsSorted[i].angleInDegrees > currentOrientation-sliceAngle/2
-            {
-                firstElementIndex = i
-                break
-            }
-        }
-        
-        // find last element index
-        for i in stride(from: allPOIsSorted.count-1, through: 0, by: -1) {
-            if allPOIsSorted[i].angleInDegrees < currentOrientation+sliceAngle/2
-            {
-                lastElementIndex = i
-                break
-            }
-        }
-        
-        // find elements
-        
-        var elements: [PointOfInterest] = []
-        
-        if firstElementIndex != nil && lastElementIndex != nil
+        if let heading: Double = locationController.locationHeading
         {
+            // return all POIs in the pizza slice
+            var firstElementIndex: Int? = nil
+            var lastElementIndex: Int? = nil
             
-            for i in stride(from: firstElementIndex!, through: lastElementIndex!, by: 1)
-            {
-                elements.append(allPOIsSorted[i])
+            // find first element index
+            for i in stride(from: 0, through: points.count-1, by: 1) {
+                if points[i].angleInDegrees > heading-self.sectionAngle/2
+                {
+                    firstElementIndex = i
+                    break
+                }
             }
+            
+            // find last element index
+            for i in stride(from: points.count-1, through: 0, by: -1) {
+                if points[i].angleInDegrees < heading+self.sectionAngle/2
+                {
+                    lastElementIndex = i
+                    break
+                }
+            }
+            
+            // find elements
+            
+            var elements: [PointOfInterest] = []
+            
+            if firstElementIndex != nil && lastElementIndex != nil
+            {
+                
+                for i in stride(from: firstElementIndex!, through: lastElementIndex!, by: 1)
+                {
+                    elements.append(points[i])
+                }
+            }
+            else
+            {
+                // No elements found in this slice
+                print("No elements found between \(heading-sectionAngle/2) and \(heading+sectionAngle/2)")
+            }
+            
+            return elements
         }
         else
         {
-            // No elements found in this slice
-            print("No elements found between \(currentOrientation-sliceAngle/2) and \(currentOrientation+sliceAngle/2)")
+            print("Couldn't unwrap heading")
+            return []
         }
-        
-        return elements
     }
-    
-    
 }
 
 

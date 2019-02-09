@@ -43,7 +43,7 @@ class RadarView: UIView
         
         sectionLayer.path = sectionPath.cgPath
         sectionLayer.fillColor = UIColor.clear.cgColor
-        sectionLayer.strokeColor = UIColor.darkGray.cgColor
+        sectionLayer.strokeColor = UIColor.black.cgColor
         sectionLayer.lineWidth = 2
         layer.addSublayer(sectionLayer)
         

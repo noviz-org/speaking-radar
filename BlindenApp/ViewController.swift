@@ -31,19 +31,27 @@ class ViewController: UIViewController
     }
     */
     
-    @objc func doubleTapped() {
-        // double tap found.
-        print("AVSpeechSynthesizer_Status:")
-        print(Speech.synthesizer.isSpeaking)
+    @objc func doubleTapped()
+    {
+        // double tap recognized
         
         if (Speech.synthesizer.isSpeaking) {
             Speech.synthesizer.stopSpeaking(at: .immediate)
-            print("was speaking, is now stoped")
+            //print("was speaking, is now stoped")
         }
         else {
-            print("is not speaking")
+            //print("is not speaking")
         }
+    }
+    
+    @objc func singleTap()
+    {
+        // single tap recognized
         
+        if let controller = controller
+        {
+            controller.speakSection()
+        }
     }
     
     override func viewDidLoad()
@@ -53,10 +61,18 @@ class ViewController: UIViewController
         
         controller = Controller(vc: self)
         
+        // Single tap recognizer
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(self.singleTap))
+        singleTap.numberOfTapsRequired = 1
+        view.addGestureRecognizer(singleTap)
+
         // Some tapping stuff... TODO
-        let tap = UITapGestureRecognizer(target: self, action: #selector(doubleTapped))
-        tap.numberOfTapsRequired = 2
-        view.addGestureRecognizer(tap)
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(self.doubleTapped))
+        doubleTap.numberOfTapsRequired = 2
+        view.addGestureRecognizer(doubleTap)
+        
+        singleTap.require(toFail: doubleTap)
+
         
         // Gestures
         let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
@@ -116,37 +132,18 @@ class ViewController: UIViewController
             self.radarView.setNeedsDisplay() // redraw
         }
     }
+    func setRadarSectionAngle(angle: Double) -> Void
+    {
+        DispatchQueue.main.async {
+            self.radarView.sectionAngle = angle
+            self.radarView.setNeedsDisplay()
+        }
+    }
     
     func updateOrientationArrow(heading: Double)
     {
         self.orientationArrow.transform = CGAffineTransform(rotationAngle: (CGFloat(-(heading*Double.pi/180)) - CGFloat(Double.pi / 4)))
     }
-    
-    
-    
-    /*
-    // This function handles all the output (display and speaking) of the Points of Interest
-    static func updateView(pointsOfInterest: [PointOfInterest])
-    {
-        if(pointsOfInterest.count > 0)
-        {
-            for point in pointsOfInterest
-            {
-                print(point.title+": "+String(point.distanceInMeters)+"m, Winkel: "+String(point.angleInDegrees))
-                
-                // Speech
-                Speech.resultPhrase(point: point)
-                
-                // UI
-                // TODO
-            }
-        }
-        else
-        {
-            Speech.noResultsPhrase()
-        }
-    }
- */
     
     // Overriding the Memory warining, nothing special yet
     override func didReceiveMemoryWarning() {

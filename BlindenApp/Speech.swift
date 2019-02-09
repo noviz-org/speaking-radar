@@ -42,10 +42,26 @@ class Speech: NSObject, AVSpeechSynthesizerDelegate
         self.sayPhrase(text: "Done. Found \(poi_count) points of interest in a radius of \(radius) meters ")
     }
     
-    static func resultPhrase(point: PointOfInterest)
+    static func speakPointsOfInterestSection(radius_sorted_points: [PointOfInterest])
     {
-        self.sayPhrase(text: point.title+" is "+String(point.distanceInMeters)+" meters away.")
-        self.poisToSay.append(point)
+        switch(radius_sorted_points.count)
+        {
+            case 0:
+                self.sayPhrase(text: "No points of interest in this direction.")
+                break
+            case 1:
+                self.sayPhrase(text: "There is one point of interest in this direction.")
+                let point = radius_sorted_points[0]
+                self.sayPhrase(text: "\(point.title) in \(point.distanceInMeters) meters.")
+                break
+            default:
+                self.sayPhrase(text: "There are \(radius_sorted_points.count) points in this direction.")
+                for point in radius_sorted_points
+                {
+                    self.sayPhrase(text: "\(point.title) in \(point.distanceInMeters) meters.")
+                }
+                break
+        }
     }
     
     static func noResultsPhrase()
