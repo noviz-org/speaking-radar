@@ -52,7 +52,7 @@ class GooglePlacesAPI
     
     static func getRequestUrl(lat: Double, lng: Double, radius: Int) -> URL?
     {
-        return URL(string: api_url+"key="+getKeyFromFile(fileName: "GooglePlacesKey")+"&location="+String(lat)+","+String(lng)+"&radius="+String(radius))
+        return URL(string: api_url+"key="+getKeyFromFile(fileName: "GooglePlacesKey")+"&location="+String(lat)+","+String(lng)+"&radius="+String(radius)+"&type=point_of_interest")
     }
     static func getPageTokenRequestUrl(token: String) -> URL?
     {

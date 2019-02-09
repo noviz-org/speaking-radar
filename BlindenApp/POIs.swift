@@ -10,12 +10,7 @@ import Foundation
 
 
 class POIs
-{
-    static func getPointsOfInterestAsync(location: Location, radius: Int, callback: @escaping ([PointOfInterest]) -> Void)
-    {
-        
-    }
-    
+{    
     // Takes in a GooglePlaces Array and returns a PointOfInterest Array
     static func makePOIsFromGooglePlaces(currentLocation: Location, googlePlaces: [GooglePlacesResult]) -> [PointOfInterest]
     {

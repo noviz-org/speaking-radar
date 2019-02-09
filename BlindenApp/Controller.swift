@@ -67,6 +67,7 @@ class Controller
                         // We do this again to make sure to use the updated location
                         self.pointsOfInterest = POIs.makePOIsFromGooglePlaces(currentLocation: Location(loc: cllocation), googlePlaces: self.googlePlaces)
                         
+                        self.viewController.updateRadarPoints(pois: self.pointsOfInterest)
                         Speech.speakDoneLoading(poi_count: self.pointsOfInterest.count, radius: radius)
                     }
             })
@@ -80,6 +81,8 @@ class Controller
             // Speech...
         }
     }
+    
+    
     func sortPOIsForAngle(pois: [PointOfInterest]) -> [PointOfInterest]
     {
         return pois.sorted(by: { $0.angleInDegrees < $1.angleInDegrees })

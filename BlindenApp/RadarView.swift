@@ -12,8 +12,9 @@ import UIKit
 class RadarView: UIView
 {
     var pointsOfInterest: [PointOfInterest] = [];
-    var heading: Double = 0
-    
+    var heading: Double = 0                         // In degrees
+    var sectionAngle: Double = 45                   // In degrees
+
     override func draw(_ rect: CGRect)
     {
         if let sublayers = layer.sublayers
@@ -27,6 +28,26 @@ class RadarView: UIView
         let lineWidth: CGFloat = 5
         let pointSize: CGFloat = 8
         
+        // Draw section
+        // Calculate the points
+        let leftOuterSectionPoint: CGPoint = CGPoint(x: (self.frame.width/2)+(self.frame.width/2)*sin(CGFloat.pi * CGFloat(-sectionAngle/2)/180), y: (self.frame.height/2)+(-self.frame.height/2)*cos(CGFloat.pi * CGFloat(-sectionAngle/2)/180))
+        let rightOuterSectionPoint: CGPoint = CGPoint(x: (self.frame.width/2)+(self.frame.width/2)*sin(CGFloat.pi * CGFloat(sectionAngle/2)/180), y: (self.frame.height/2)+(-self.frame.height/2)*cos(CGFloat.pi * CGFloat(sectionAngle/2)/180))
+        
+        let sectionPath = UIBezierPath()
+        let sectionLayer = CAShapeLayer()
+        
+        // Draw the shape
+        sectionPath.move(to: leftOuterSectionPoint)
+        sectionPath.addLine(to: CGPoint(x: self.frame.width/2, y: self.frame.height/2))
+        sectionPath.addLine(to: rightOuterSectionPoint)
+        
+        sectionLayer.path = sectionPath.cgPath
+        sectionLayer.fillColor = UIColor.clear.cgColor
+        sectionLayer.strokeColor = UIColor.darkGray.cgColor
+        sectionLayer.lineWidth = 2
+        layer.addSublayer(sectionLayer)
+        
+        // Draw border circle
         let circlePath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))
         let borderCircleLayer = CAShapeLayer()
         borderCircleLayer.path = circlePath.cgPath
@@ -35,6 +56,7 @@ class RadarView: UIView
         borderCircleLayer.lineWidth = lineWidth
         layer.addSublayer(borderCircleLayer)
         
+        // Draw points
         for point in pointsOfInterest
         {
             // Draw a point for each Point in points
