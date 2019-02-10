@@ -102,6 +102,15 @@ class Controller
         Speech.speakPointsOfInterestSection(radius_sorted_points: pois)
     }
     
+    func navigateToPointOfInterest()
+    {
+        // 1. We look at what was last said and repeat it to confirm
+        // 2. We let the user confirm by swiping up again. Abort, by swiping down and select the previous or next by swiping left and right
+        // 3. On confirmation we open the location in Maps
+        
+        AppleMaps.openInMaps(place: googlePlaces[0])
+    }
+    
     
     func sortPOIsForAngle(pois: [PointOfInterest]) -> [PointOfInterest]
     {

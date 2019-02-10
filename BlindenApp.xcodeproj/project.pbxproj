@@ -23,6 +23,7 @@
 		8075DBF1220B14AA00B037E8 /* LocationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075DBF0220B14AA00B037E8 /* LocationController.swift */; };
 		8075DBF3220B1C4A00B037E8 /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075DBF2220B1C4A00B037E8 /* Location.swift */; };
 		8075DBF5220CDCF800B037E8 /* RadarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075DBF4220CDCF800B037E8 /* RadarView.swift */; };
+		8075DBF7220F4D9800B037E8 /* AppleMaps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8075DBF6220F4D9800B037E8 /* AppleMaps.swift */; };
 		80ACB691205D7F7700501C7D /* GooglePlacesKey.txt in Resources */ = {isa = PBXBuildFile; fileRef = 80ACB690205D7F7700501C7D /* GooglePlacesKey.txt */; };
 /* End PBXBuildFile section */
 
@@ -45,6 +46,7 @@
 		8075DBF0220B14AA00B037E8 /* LocationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationController.swift; sourceTree = "<group>"; };
 		8075DBF2220B1C4A00B037E8 /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		8075DBF4220CDCF800B037E8 /* RadarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RadarView.swift; sourceTree = "<group>"; };
+		8075DBF6220F4D9800B037E8 /* AppleMaps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMaps.swift; sourceTree = "<group>"; };
 		80ACB690205D7F7700501C7D /* GooglePlacesKey.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = GooglePlacesKey.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -92,6 +94,7 @@
 				07BAB7572041AC200010A059 /* GooglePlaces.swift */,
 				079F167F1F9CFAC100372913 /* POIs.swift */,
 				074DA2B92055C70100981831 /* PointOfInterest.swift */,
+				8075DBF6220F4D9800B037E8 /* AppleMaps.swift */,
 				074DA2BB2055CB6B00981831 /* Speech.swift */,
 				07CBBB8E1F99EF51006EAC56 /* Info.plist */,
 				07CBBB861F99EF51006EAC56 /* Main.storyboard */,
@@ -205,6 +208,7 @@
 				07CBBB851F99EF51006EAC56 /* ViewController.swift in Sources */,
 				8075DBF3220B1C4A00B037E8 /* Location.swift in Sources */,
 				8075DBF5220CDCF800B037E8 /* RadarView.swift in Sources */,
+				8075DBF7220F4D9800B037E8 /* AppleMaps.swift in Sources */,
 				07CBBB831F99EF51006EAC56 /* AppDelegate.swift in Sources */,
 				07BAB7582041AC200010A059 /* GooglePlaces.swift in Sources */,
 				074DA2BC2055CB6B00981831 /* Speech.swift in Sources */,

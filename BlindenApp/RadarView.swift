@@ -14,6 +14,7 @@ class RadarView: UIView
     var pointsOfInterest: [PointOfInterest] = [];
     var heading: Double = 0                         // In degrees
     var sectionAngle: Double = 45                   // In degrees
+    
 
     override func draw(_ rect: CGRect)
     {
@@ -27,6 +28,7 @@ class RadarView: UIView
         
         let lineWidth: CGFloat = 5
         let pointSize: CGFloat = 8
+        let positionPointSize: CGFloat = 20
         
         // Draw section
         // Calculate the points
@@ -46,6 +48,14 @@ class RadarView: UIView
         sectionLayer.strokeColor = UIColor.black.cgColor
         sectionLayer.lineWidth = 2
         layer.addSublayer(sectionLayer)
+        
+        // Draw location point
+        let pointPath = UIBezierPath(ovalIn: CGRect(origin: CGPoint(x: self.frame.width/2 - positionPointSize/2, y: self.frame.height/2 - positionPointSize/2), size: CGSize(width: positionPointSize, height: positionPointSize)))
+        let pointLayer = CAShapeLayer()
+        pointLayer.path = pointPath.cgPath
+        pointLayer.strokeColor = UIColor.black.cgColor
+        pointLayer.lineWidth = 0
+        layer.addSublayer(pointLayer)
         
         // Draw border circle
         let circlePath = UIBezierPath(ovalIn: CGRect(x: 0, y: 0, width: self.frame.width, height: self.frame.height))

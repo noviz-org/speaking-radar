@@ -14,24 +14,14 @@ class ViewController: UIViewController
     
     @IBOutlet weak var radarView: RadarView!
     
+    @IBOutlet weak var speechTextField: UITextField!
+    
     var controller: Controller? = nil
     
-    /*
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-            let position = touch.location(in: view)
-            print(position)
-        }
-    }
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
-        if let touch = touches.first {
-            let position = touch.location(in: view)
-            print(position)
-        }
-    }
-    */
+    let speechView: Speech = Speech()
     
-    @objc func doubleTapped()
+    // Tap functions
+    @objc func doubleTap()
     {
         // double tap recognized
         
@@ -67,7 +57,7 @@ class ViewController: UIViewController
         view.addGestureRecognizer(singleTap)
 
         // Some tapping stuff... TODO
-        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(self.doubleTapped))
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(self.doubleTap))
         doubleTap.numberOfTapsRequired = 2
         view.addGestureRecognizer(doubleTap)
         
@@ -109,11 +99,16 @@ class ViewController: UIViewController
             
             if let controller = self.controller
             {
-                controller.loadGooglePlaces()
+                controller.navigateToPointOfInterest()
             }
         }
         else if gesture.direction == UISwipeGestureRecognizerDirection.down {
             //print("Swipe Down")
+            
+            if let controller = self.controller
+            {
+                controller.loadGooglePlaces()
+            }
         }
     }
     

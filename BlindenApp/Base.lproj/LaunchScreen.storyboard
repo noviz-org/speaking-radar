@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,17 +18,17 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon for Loadingscreen" translatesAutoresizingMaskIntoConstraints="NO" id="b32-lM-wx2">
-                                <rect key="frame" x="37.5" y="108" width="300" height="300"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Icon for Loadingscreen" translatesAutoresizingMaskIntoConstraints="NO" id="b32-lM-wx2">
+                                <rect key="frame" x="36" y="210" width="248" height="248"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" secondItem="b32-lM-wx2" secondAttribute="height" multiplier="1:1" id="pDf-hB-ZNg"/>
+                                    <constraint firstAttribute="width" secondItem="b32-lM-wx2" secondAttribute="height" multiplier="1:1" id="LgI-cK-mi5"/>
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="© NOVIZ" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.75" translatesAutoresizingMaskIntoConstraints="NO" id="0xD-tA-XGc">
-                                <rect key="frame" x="0.0" y="601" width="377" height="21"/>
+                                <rect key="frame" x="0.0" y="502" width="322" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="rBe-CG-Icy"/>
                                 </constraints>
@@ -36,14 +36,25 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="noviz_logo" translatesAutoresizingMaskIntoConstraints="NO" id="68J-hE-lto">
+                                <rect key="frame" x="60" y="70" width="200" height="27.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="68J-hE-lto" secondAttribute="height" multiplier="51:7" id="YJ6-Aa-NNv"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="0xD-tA-XGc" secondAttribute="bottom" constant="45" id="16q-9X-rMd"/>
-                            <constraint firstItem="b32-lM-wx2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="93N-FL-aOD"/>
+                            <constraint firstItem="b32-lM-wx2" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="1pj-qg-6Qz"/>
+                            <constraint firstItem="68J-hE-lto" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" constant="60" id="CsF-oQ-n2P"/>
+                            <constraint firstItem="b32-lM-wx2" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="50" id="J9i-py-LLS"/>
+                            <constraint firstItem="b32-lM-wx2" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="20" id="VgK-yp-GQw"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="b32-lM-wx2" secondAttribute="trailing" constant="20" id="bO5-6X-11a"/>
                             <constraint firstItem="0xD-tA-XGc" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="dsR-Dd-G8g"/>
-                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="b32-lM-wx2" secondAttribute="bottom" constant="259" id="goQ-Rh-vlP"/>
-                            <constraint firstItem="b32-lM-wx2" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="88" id="kjh-1M-Ldl"/>
+                            <constraint firstAttribute="trailing" secondItem="68J-hE-lto" secondAttribute="trailing" constant="60" id="oLH-TM-dEk"/>
+                            <constraint firstItem="68J-hE-lto" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="50" id="oaz-jy-mY5"/>
+                            <constraint firstItem="68J-hE-lto" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="sXA-7t-jfd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="0xD-tA-XGc" secondAttribute="trailing" constant="-18" id="tLD-oM-unY"/>
                         </constraints>
                     </view>
@@ -55,5 +66,6 @@
     </scenes>
     <resources>
         <image name="Icon for Loadingscreen" width="194.3558349609375" height="194.3558349609375"/>
+        <image name="noviz_logo" width="2083" height="417"/>
     </resources>
 </document>

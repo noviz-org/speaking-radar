@@ -22,42 +22,47 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="location_arrow" translatesAutoresizingMaskIntoConstraints="NO" id="ONC-e3-gsp">
-                                <rect key="frame" x="21" y="30" width="50" height="50"/>
+                                <rect key="frame" x="304" y="50" width="50" height="50"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="ONC-e3-gsp" secondAttribute="height" multiplier="1:1" id="bsF-Fy-zOw"/>
                                     <constraint firstAttribute="width" constant="50" id="iTf-Pm-NrT"/>
                                 </constraints>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="position_dot" translatesAutoresizingMaskIntoConstraints="NO" id="iWZ-f6-jAy">
-                                <rect key="frame" x="162.5" y="308.5" width="50" height="50"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="50" id="Jhd-Cw-cMC"/>
-                                    <constraint firstAttribute="width" secondItem="iWZ-f6-jAy" secondAttribute="height" multiplier="1:1" id="k66-Yq-tOk"/>
-                                </constraints>
-                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EJq-Uq-UBB" userLabel="RadarView" customClass="RadarView" customModule="BlindenApp" customModuleProvider="target">
-                                <rect key="frame" x="36" y="182" width="303" height="303"/>
+                                <rect key="frame" x="36" y="232" width="303" height="303"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="EJq-Uq-UBB" secondAttribute="height" multiplier="1:1" id="P1j-0x-g0G"/>
                                 </constraints>
                             </view>
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vRp-sx-r4F" userLabel="SpeechTextField">
+                                <rect key="frame" x="36" y="157" width="303" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="TCB-fF-VQs"/>
+                                </constraints>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="vRp-sx-r4F" secondAttribute="trailing" constant="20" id="14d-dw-zFd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EJq-Uq-UBB" secondAttribute="trailing" constant="20" id="3vW-t4-rP9"/>
-                            <constraint firstItem="iWZ-f6-jAy" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="8CK-J7-zy9"/>
-                            <constraint firstItem="ONC-e3-gsp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="30" id="Aow-MG-rJ7"/>
+                            <constraint firstItem="ONC-e3-gsp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="Aow-MG-rJ7"/>
                             <constraint firstItem="EJq-Uq-UBB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="CBf-cH-uD2"/>
-                            <constraint firstItem="iWZ-f6-jAy" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="EMa-4q-VYH"/>
-                            <constraint firstItem="EJq-Uq-UBB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="Gm1-d1-Ohn"/>
+                            <constraint firstItem="EJq-Uq-UBB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="50" id="Gm1-d1-Ohn"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ONC-e3-gsp" secondAttribute="trailing" constant="5" id="Ize-Cx-cLG"/>
+                            <constraint firstItem="EJq-Uq-UBB" firstAttribute="top" secondItem="vRp-sx-r4F" secondAttribute="bottom" constant="15" id="jOV-u0-UVT"/>
                             <constraint firstItem="EJq-Uq-UBB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rR6-yk-NSe"/>
-                            <constraint firstItem="ONC-e3-gsp" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="5" id="wav-al-elt"/>
+                            <constraint firstItem="vRp-sx-r4F" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sVl-Y2-Khp"/>
+                            <constraint firstItem="vRp-sx-r4F" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="udt-kd-j62"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="orientationArrow" destination="ONC-e3-gsp" id="Q10-b9-FKr"/>
                         <outlet property="radarView" destination="EJq-Uq-UBB" id="ReM-LU-BhN"/>
+                        <outlet property="speechTextField" destination="vRp-sx-r4F" id="9XK-sb-P7l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -67,6 +72,5 @@
     </scenes>
     <resources>
         <image name="location_arrow" width="92" height="92"/>
-        <image name="position_dot" width="300" height="300"/>
     </resources>
 </document>
