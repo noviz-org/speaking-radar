@@ -13,6 +13,7 @@ class Controller
 {
     let viewController: ViewController
     let locationController: LocationController
+    let speechController: SpeechController
     
     var googlePlaces: [GooglePlacesResult] = []
     var pointsOfInterest: [PointOfInterest] = []
@@ -22,6 +23,7 @@ class Controller
     {
         viewController = vc
         locationController = LocationController() // Initialise the LocationController
+        speechController = SpeechController()
         
         // Set the section angle
         self.viewController.setRadarSectionAngle(angle: self.sectionAngle)
@@ -55,7 +57,7 @@ class Controller
     
     func loadGooglePlaces()
     {
-        Speech.speakLoadingPointsOfInterest()
+        speechController.speakLoadingPointsOfInterest()
         
         // Saves the google Places in the local variable
         if let cllocation: CLLocation = self.locationController.locationCoordinates
@@ -76,7 +78,7 @@ class Controller
                         self.pointsOfInterest = POIs.makePOIsFromGooglePlaces(currentLocation: Location(loc: cllocation), googlePlaces: self.googlePlaces)
                         
                         self.viewController.updateRadarPoints(pois: self.pointsOfInterest)
-                        Speech.speakDoneLoading(poi_count: self.pointsOfInterest.count, radius: radius)
+                        self.speechController.speakDoneLoading(poi_count: self.pointsOfInterest.count, radius: radius)
                     }
             })
         }
@@ -99,16 +101,41 @@ class Controller
         pois = self.sortPOIsForDistance(pois: pois)
         
         // Speak them
-        Speech.speakPointsOfInterestSection(radius_sorted_points: pois)
+        speechController.speakPointsOfInterestSection(radius_sorted_points: pois)
     }
     
+    func stopSpeaking()
+    {
+        if (speechController.synthesizer.isSpeaking) {
+            speechController.synthesizer.stopSpeaking(at: .immediate)
+            //print("was speaking, is now stoped")
+        }
+        else {
+            //print("is not speaking")
+        }
+    }
     func navigateToPointOfInterest()
     {
-        // 1. We look at what was last said and repeat it to confirm
-        // 2. We let the user confirm by swiping up again. Abort, by swiping down and select the previous or next by swiping left and right
-        // 3. On confirmation we open the location in Maps
+        // Get the last said google place id
         
-        AppleMaps.openInMaps(place: googlePlaces[0])
+        // Get id
+        if let lastPlaceId: String = speechController.getLastSaidPlaceId()
+        {
+            if let index = self.googlePlaces.index(where: {$0.id == lastPlaceId})
+            {
+                let place = self.googlePlaces[index]
+                
+                AppleMaps.openInMaps(place: place)
+            }
+            else
+            {
+                print("Found no place like that")
+            }
+        }
+        else
+        {
+            print("No Id")
+        }
     }
     
     

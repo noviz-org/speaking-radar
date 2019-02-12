@@ -18,19 +18,16 @@ class ViewController: UIViewController
     
     var controller: Controller? = nil
     
-    let speechView: Speech = Speech()
+    let speechView: SpeechController = SpeechController()
     
     // Tap functions
     @objc func doubleTap()
     {
         // double tap recognized
         
-        if (Speech.synthesizer.isSpeaking) {
-            Speech.synthesizer.stopSpeaking(at: .immediate)
-            //print("was speaking, is now stoped")
-        }
-        else {
-            //print("is not speaking")
+        if let controller = controller
+        {
+            controller.stopSpeaking()
         }
     }
     

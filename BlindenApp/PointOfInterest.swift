@@ -18,18 +18,22 @@ import Foundation
 class PointOfInterest
 {
     var title: String
+    var id: String
     var type: PointOfInterestType?
     var distanceInMeters: Int
     var angleInDegrees: Double
     
-    init(title: String, distanceInMeters: Int, angleInDegrees: Double) {
+    init(title: String, id: String, distanceInMeters: Int, angleInDegrees: Double) {
         self.title = title
+        self.id = id
         self.distanceInMeters = distanceInMeters
         self.angleInDegrees = angleInDegrees
     }
     init(observerLocation: Location, googlePlace: GooglePlacesResult)
     {
         self.title = googlePlace.name
+        
+        self.id = googlePlace.id
         
         self.distanceInMeters = Int(Location.calculateDistanceBetweenPointsInMeters(loc1: observerLocation, loc2: googlePlace.geometry.location).rounded())
         

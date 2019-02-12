@@ -74,7 +74,7 @@ class RadarView: UIView
             let gcPoint: CGPoint = CGPoint(
                 x: sin(((point.angleInDegrees-self.heading)/180.0)*Double.pi)*(Double(point.distanceInMeters)/500.0)*Double(self.frame.width/2.0)+Double(self.frame.width/2.0),
                 y: -cos(((point.angleInDegrees-self.heading)/180.0)*Double.pi)*(Double(point.distanceInMeters)/500.0)*Double(self.frame.height/2.0)+Double(self.frame.height/2.0))
-            let pointPath = UIBezierPath(ovalIn: CGRect(origin: gcPoint, size: CGSize(width: pointSize, height: pointSize)))
+            let pointPath = UIBezierPath(ovalIn: CGRect(origin: CGPoint(x: gcPoint.x-pointSize/2, y: gcPoint.y-pointSize/2), size: CGSize(width: pointSize, height: pointSize)))
             pointLayer.path = pointPath.cgPath
             if let type = point.type
             {

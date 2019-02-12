@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		0728108B204177F6006E61C4 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0728108A204177F6006E61C4 /* Default-568h@2x.png */; };
 		074DA2BA2055C70100981831 /* PointOfInterest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074DA2B92055C70100981831 /* PointOfInterest.swift */; };
-		074DA2BC2055CB6B00981831 /* Speech.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074DA2BB2055CB6B00981831 /* Speech.swift */; };
+		074DA2BC2055CB6B00981831 /* SpeechController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 074DA2BB2055CB6B00981831 /* SpeechController.swift */; };
 		079F16801F9CFAC100372913 /* POIs.swift in Sources */ = {isa = PBXBuildFile; fileRef = 079F167F1F9CFAC100372913 /* POIs.swift */; };
 		07A7390E2059B4400001DA2A /* Controller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07A7390D2059B4400001DA2A /* Controller.swift */; };
 		07BAB7582041AC200010A059 /* GooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = 07BAB7572041AC200010A059 /* GooglePlaces.swift */; };
@@ -30,7 +30,7 @@
 /* Begin PBXFileReference section */
 		0728108A204177F6006E61C4 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		074DA2B92055C70100981831 /* PointOfInterest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PointOfInterest.swift; sourceTree = "<group>"; };
-		074DA2BB2055CB6B00981831 /* Speech.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Speech.swift; sourceTree = "<group>"; };
+		074DA2BB2055CB6B00981831 /* SpeechController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechController.swift; sourceTree = "<group>"; };
 		079F167F1F9CFAC100372913 /* POIs.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = POIs.swift; sourceTree = "<group>"; };
 		07A7390D2059B4400001DA2A /* Controller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Controller.swift; sourceTree = "<group>"; };
 		07BAB7572041AC200010A059 /* GooglePlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GooglePlaces.swift; sourceTree = "<group>"; };
@@ -95,7 +95,7 @@
 				079F167F1F9CFAC100372913 /* POIs.swift */,
 				074DA2B92055C70100981831 /* PointOfInterest.swift */,
 				8075DBF6220F4D9800B037E8 /* AppleMaps.swift */,
-				074DA2BB2055CB6B00981831 /* Speech.swift */,
+				074DA2BB2055CB6B00981831 /* SpeechController.swift */,
 				07CBBB8E1F99EF51006EAC56 /* Info.plist */,
 				07CBBB861F99EF51006EAC56 /* Main.storyboard */,
 				07CBBB8B1F99EF51006EAC56 /* LaunchScreen.storyboard */,
@@ -211,7 +211,7 @@
 				8075DBF7220F4D9800B037E8 /* AppleMaps.swift in Sources */,
 				07CBBB831F99EF51006EAC56 /* AppDelegate.swift in Sources */,
 				07BAB7582041AC200010A059 /* GooglePlaces.swift in Sources */,
-				074DA2BC2055CB6B00981831 /* Speech.swift in Sources */,
+				074DA2BC2055CB6B00981831 /* SpeechController.swift in Sources */,
 				07A7390E2059B4400001DA2A /* Controller.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
