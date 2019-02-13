@@ -23,7 +23,19 @@ class Controller
     {
         viewController = vc
         locationController = LocationController() // Initialise the LocationController
+        
         speechController = SpeechController()
+        speechController.lastPoiUpdatedCallbacks.append({
+            (id) in
+            
+                if let index = self.pointsOfInterest.index(where: {$0.id == id})
+                {
+                    let poi = self.pointsOfInterest[index]
+                    
+                    self.viewController.updateLastSpokenTextField(text: poi.title + " - " + String(poi.distanceInMeters) + " meters" )
+                }
+            
+            })
         
         // Set the section angle
         self.viewController.setRadarSectionAngle(angle: self.sectionAngle)

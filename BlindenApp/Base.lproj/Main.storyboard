@@ -35,34 +35,34 @@
                                     <constraint firstAttribute="width" secondItem="EJq-Uq-UBB" secondAttribute="height" multiplier="1:1" id="P1j-0x-g0G"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vRp-sx-r4F" userLabel="SpeechTextField">
-                                <rect key="frame" x="36" y="157" width="303" height="60"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAI-s4-0f2">
+                                <rect key="frame" x="36" y="152" width="303" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="TCB-fF-VQs"/>
+                                    <constraint firstAttribute="height" constant="60" id="vFe-Fw-PRe"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailingMargin" secondItem="vRp-sx-r4F" secondAttribute="trailing" constant="20" id="14d-dw-zFd"/>
                             <constraint firstAttribute="trailingMargin" secondItem="EJq-Uq-UBB" secondAttribute="trailing" constant="20" id="3vW-t4-rP9"/>
+                            <constraint firstItem="OAI-s4-0f2" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="4Wu-aP-aIj"/>
                             <constraint firstItem="ONC-e3-gsp" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" constant="50" id="Aow-MG-rJ7"/>
                             <constraint firstItem="EJq-Uq-UBB" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="CBf-cH-uD2"/>
                             <constraint firstItem="EJq-Uq-UBB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="50" id="Gm1-d1-Ohn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ONC-e3-gsp" secondAttribute="trailing" constant="5" id="Ize-Cx-cLG"/>
-                            <constraint firstItem="EJq-Uq-UBB" firstAttribute="top" secondItem="vRp-sx-r4F" secondAttribute="bottom" constant="15" id="jOV-u0-UVT"/>
+                            <constraint firstItem="EJq-Uq-UBB" firstAttribute="top" secondItem="OAI-s4-0f2" secondAttribute="bottom" constant="20" id="MYw-G9-f7Y"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="OAI-s4-0f2" secondAttribute="trailing" constant="20" id="aU4-io-J1s"/>
+                            <constraint firstItem="OAI-s4-0f2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qeo-Mi-Ncy"/>
                             <constraint firstItem="EJq-Uq-UBB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rR6-yk-NSe"/>
-                            <constraint firstItem="vRp-sx-r4F" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="sVl-Y2-Khp"/>
-                            <constraint firstItem="vRp-sx-r4F" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="20" id="udt-kd-j62"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="lastSpokenPlaceLabel" destination="OAI-s4-0f2" id="KDl-bg-Zk0"/>
                         <outlet property="orientationArrow" destination="ONC-e3-gsp" id="Q10-b9-FKr"/>
                         <outlet property="radarView" destination="EJq-Uq-UBB" id="ReM-LU-BhN"/>
-                        <outlet property="speechTextField" destination="vRp-sx-r4F" id="9XK-sb-P7l"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

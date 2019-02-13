@@ -18,6 +18,8 @@ class SpeechController: NSObject, AVSpeechSynthesizerDelegate
     
     let synthesizer = AVSpeechSynthesizer()
     
+    var lastPoiUpdatedCallbacks: [(String) -> Void] = []
+    
     override init()
     {
         super.init()
@@ -42,7 +44,7 @@ class SpeechController: NSObject, AVSpeechSynthesizerDelegate
         {
             // There are more Point of views to say
             lastSaidId = pointsOfInterest[lastSaidPointOfInterestIndex - utteranceIndexOffset].id
-            
+            self.lastSaidPointOfInterestUpdated()
         }
         lastSaidPointOfInterestIndex = lastSaidPointOfInterestIndex + 1 // Somehow ++ won't work
     }
@@ -50,6 +52,17 @@ class SpeechController: NSObject, AVSpeechSynthesizerDelegate
     func getLastSaidPlaceId() -> String?
     {
         return lastSaidId
+    }
+    
+    func lastSaidPointOfInterestUpdated()
+    {
+        if let id = self.lastSaidId
+        {
+            for f in lastPoiUpdatedCallbacks
+            {
+                f(id)
+            }
+        }
     }
     
      func speakLoadingPointsOfInterest()

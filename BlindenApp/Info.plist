@@ -23,7 +23,7 @@
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
 	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Dar Ihre GPS Position verwendet werden, um Ihnen Informationen über Ihre Umgebung zu beschaffen?</string>
+	<string>Darf Ihre GPS Position verwendet werden, um Ihnen Informationen über Ihre Umgebung zu beschaffen?</string>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>

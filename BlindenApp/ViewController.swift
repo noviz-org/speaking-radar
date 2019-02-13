@@ -14,7 +14,7 @@ class ViewController: UIViewController
     
     @IBOutlet weak var radarView: RadarView!
     
-    @IBOutlet weak var speechTextField: UITextField!
+    @IBOutlet weak var lastSpokenPlaceLabel: UILabel!
     
     var controller: Controller? = nil
     
@@ -45,6 +45,9 @@ class ViewController: UIViewController
     {
         // Call the super viewDidLoad function first
         super.viewDidLoad()
+    
+        self.view.isAccessibilityElement = true
+        self.view.accessibilityTraits = UIAccessibilityTraitAllowsDirectInteraction
         
         controller = Controller(vc: self)
         
@@ -135,6 +138,11 @@ class ViewController: UIViewController
     func updateOrientationArrow(heading: Double)
     {
         self.orientationArrow.transform = CGAffineTransform(rotationAngle: (CGFloat(-(heading*Double.pi/180)) - CGFloat(Double.pi / 4)))
+    }
+    
+    func updateLastSpokenTextField(text: String)
+    {
+        lastSpokenPlaceLabel.text = text
     }
     
     // Overriding the Memory warining, nothing special yet
