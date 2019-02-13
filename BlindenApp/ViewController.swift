@@ -20,96 +20,32 @@ class ViewController: UIViewController
     
     let speechView: SpeechController = SpeechController()
     
-    // Tap functions
-    @objc func doubleTap()
-    {
-        // double tap recognized
-        
-        if let controller = controller
-        {
-            controller.stopSpeaking()
-        }
-    }
-    
-    @objc func singleTap()
-    {
-        // single tap recognized
-        
-        if let controller = controller
-        {
-            controller.speakSection()
-        }
-    }
-    
     override func viewDidLoad()
     {
         // Call the super viewDidLoad function first
         super.viewDidLoad()
+        
+        radarView.start(vc: self)
     
-        self.view.isAccessibilityElement = true
-        self.view.accessibilityTraits = UIAccessibilityTraitAllowsDirectInteraction
+        //self.view.isAccessibilityElement = true
+        //self.view.accessibilityTraits = UIAccessibilityTraitAllowsDirectInteraction
+
+        // Label
+        self.lastSpokenPlaceLabel.isAccessibilityElement = true
+        self.lastSpokenPlaceLabel.accessibilityTraits = UIAccessibilityTraitStaticText
+        self.lastSpokenPlaceLabel.font = UIFont.preferredFont(forTextStyle: .body)
+        self.lastSpokenPlaceLabel.adjustsFontForContentSizeCategory = true
+
+        // Radar View
+        self.radarView.isAccessibilityElement = true
+        self.radarView.accessibilityTraits = UIAccessibilityTraitAllowsDirectInteraction
+        self.radarView.accessibilityLabel = "Radar"
+        self.radarView.accessibilityValue = "No places loaded."
+        self.radarView.accessibilityHint = "Swipe down to load places."
+
         
         controller = Controller(vc: self)
         
-        // Single tap recognizer
-        let singleTap = UITapGestureRecognizer(target: self, action: #selector(self.singleTap))
-        singleTap.numberOfTapsRequired = 1
-        view.addGestureRecognizer(singleTap)
-
-        // Some tapping stuff... TODO
-        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(self.doubleTap))
-        doubleTap.numberOfTapsRequired = 2
-        view.addGestureRecognizer(doubleTap)
-        
-        singleTap.require(toFail: doubleTap)
-
-        
-        // Gestures
-        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
-        swipeLeft.direction = .left
-        self.view.addGestureRecognizer(swipeLeft)
-        
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
-        swipeRight.direction = .right
-        self.view.addGestureRecognizer(swipeRight)
-        
-        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
-        swipeUp.direction = .up
-        self.view.addGestureRecognizer(swipeUp)
-        
-        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
-        swipeDown.direction = .down
-        self.view.addGestureRecognizer(swipeDown)
-    }
-
-    // Actual gesture handeling
-    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void
-    {
-        if gesture.direction == UISwipeGestureRecognizerDirection.right
-        {
-            //print("Swipe Right")
-        }
-        else if gesture.direction == UISwipeGestureRecognizerDirection.left
-        {
-            //print("Swipe Left")
-        }
-        else if gesture.direction == UISwipeGestureRecognizerDirection.up
-        {
-            //print("Swipe Up")
-            
-            if let controller = self.controller
-            {
-                controller.navigateToPointOfInterest()
-            }
-        }
-        else if gesture.direction == UISwipeGestureRecognizerDirection.down {
-            //print("Swipe Down")
-            
-            if let controller = self.controller
-            {
-                controller.loadGooglePlaces()
-            }
-        }
     }
     
     func updateRadarPoints(pois: [PointOfInterest]) -> Void

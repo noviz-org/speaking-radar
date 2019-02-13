@@ -22,6 +22,9 @@ class Controller
     init(vc: ViewController)
     {
         viewController = vc
+        
+        vc.lastSpokenPlaceLabel.text = "No place selected"
+        
         locationController = LocationController() // Initialise the LocationController
         
         speechController = SpeechController()
@@ -65,6 +68,9 @@ class Controller
                 self.viewController.updateRadarPoints(pois: self.pointsOfInterest)
             }
         })
+        
+        // Load for the first time
+        self.loadGooglePlaces()
     }
     
     func loadGooglePlaces()

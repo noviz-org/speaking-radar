@@ -43,7 +43,7 @@ class LocationController: NSObject, CLLocationManagerDelegate
     }
     
     // locationHeading declaration
-    private var _locationHeading: Double? = nil
+    private var _locationHeading: Double? = 0
     var locationHeading: Double?
     {
         get

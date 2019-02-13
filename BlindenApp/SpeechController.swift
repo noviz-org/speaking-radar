@@ -34,12 +34,7 @@ class SpeechController: NSObject, AVSpeechSynthesizerDelegate
     }
     
     func startedSpeaking(utterance: AVSpeechUtterance)
-    {
-        //print("Hello - " + utterance.attributedSpeechString.string )
-        print("lastSaidPointOfInterestIndex = " + String(lastSaidPointOfInterestIndex))
-        print("utteranceIndexOffset = " + String(utteranceIndexOffset))
-        print("pointsOfInterest.count = " + String(pointsOfInterest.count))
-        
+    {        
         if(utteranceIndexOffset <= lastSaidPointOfInterestIndex)
         {
             // There are more Point of views to say
@@ -78,7 +73,7 @@ class SpeechController: NSObject, AVSpeechSynthesizerDelegate
     {
         self.utteranceIndexOffset = 1
         lastSaidPointOfInterestIndex = 0
-        self.sayPhrase(text: "Done. Found \(poi_count) points of interest in a radius of \(radius) meters ")
+        self.sayPhrase(text: "Loaded places. Found \(poi_count) points of interest in a radius of \(radius) meters ")
     }
     
     func speakPointsOfInterestSection(radius_sorted_points: [PointOfInterest])

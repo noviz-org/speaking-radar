@@ -11,10 +11,72 @@ import UIKit
 
 class RadarView: UIView
 {
+    var viewController: ViewController?
     var pointsOfInterest: [PointOfInterest] = [];
     var heading: Double = 0                         // In degrees
     var sectionAngle: Double = 45                   // In degrees
     
+    func start(vc: ViewController)
+    {        // Assign ViewController
+        self.viewController = vc
+        
+        // Single tap recognizer
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(self.singleTap))
+        singleTap.numberOfTapsRequired = 1
+        self.addGestureRecognizer(singleTap)
+        
+        // Some tapping stuff... TODO
+        let doubleTap = UITapGestureRecognizer(target: self, action: #selector(self.doubleTap))
+        doubleTap.numberOfTapsRequired = 2
+        self.addGestureRecognizer(doubleTap)
+        
+        singleTap.require(toFail: doubleTap)
+        
+        
+        // Gestures
+        let swipeLeft = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeLeft.direction = .left
+        self.addGestureRecognizer(swipeLeft)
+        
+        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeRight.direction = .right
+        self.addGestureRecognizer(swipeRight)
+        
+        let swipeUp = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeUp.direction = .up
+        self.addGestureRecognizer(swipeUp)
+        
+        let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(handleGesture))
+        swipeDown.direction = .down
+        self.addGestureRecognizer(swipeDown)
+    }
+    
+    // Tap functions
+    @objc func doubleTap()
+    {
+        // double tap recognized
+        
+        if let vc = viewController
+        {
+            if let controller = vc.controller
+            {
+                controller.stopSpeaking()
+            }
+        }
+    }
+    
+    @objc func singleTap()
+    {
+        // single tap recognized
+        
+        if let vc = viewController
+        {
+            if let controller = vc.controller
+            {
+                controller.speakSection()
+            }
+        }
+    }
 
     override func draw(_ rect: CGRect)
     {
@@ -106,4 +168,42 @@ class RadarView: UIView
         layer.cornerRadius = bounds.size.width/2;
     }
     
+    // Actual gesture handeling
+    @objc func handleGesture(gesture: UISwipeGestureRecognizer) -> Void
+    {
+        if gesture.direction == UISwipeGestureRecognizerDirection.right
+        {
+            //print("Swipe Right")
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.left
+        {
+            //print("Swipe Left")
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.up
+        {
+            //print("Swipe Up")
+            
+            if let vc = viewController
+            {
+                if let controller = vc.controller
+                {
+                    controller.navigateToPointOfInterest()
+                }
+            }
+        }
+        else if gesture.direction == UISwipeGestureRecognizerDirection.down {
+            //print("Swipe Down")
+            
+            if let vc = viewController
+            {
+                if let controller = vc.controller
+                {
+                    controller.loadGooglePlaces()
+                }
+            }
+        }
+    }
+
+    
 }
+

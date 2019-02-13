@@ -36,10 +36,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OAI-s4-0f2">
-                                <rect key="frame" x="36" y="152" width="303" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="vFe-Fw-PRe"/>
-                                </constraints>
+                                <rect key="frame" x="36" y="120" width="303" height="92"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -54,9 +51,8 @@
                             <constraint firstItem="EJq-Uq-UBB" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="50" id="Gm1-d1-Ohn"/>
                             <constraint firstAttribute="trailingMargin" secondItem="ONC-e3-gsp" secondAttribute="trailing" constant="5" id="Ize-Cx-cLG"/>
                             <constraint firstItem="EJq-Uq-UBB" firstAttribute="top" secondItem="OAI-s4-0f2" secondAttribute="bottom" constant="20" id="MYw-G9-f7Y"/>
+                            <constraint firstItem="OAI-s4-0f2" firstAttribute="top" secondItem="ONC-e3-gsp" secondAttribute="bottom" constant="20" id="Mjl-d0-kl1"/>
                             <constraint firstAttribute="trailingMargin" secondItem="OAI-s4-0f2" secondAttribute="trailing" constant="20" id="aU4-io-J1s"/>
-                            <constraint firstItem="OAI-s4-0f2" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qeo-Mi-Ncy"/>
-                            <constraint firstItem="EJq-Uq-UBB" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rR6-yk-NSe"/>
                         </constraints>
                     </view>
                     <connections>
